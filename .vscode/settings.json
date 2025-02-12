@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "sdl.h": "c",
+        "vector": "cpp",
+        "array": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "chrono": "cpp",
+        "compare": "cpp",
+        "functional": "cpp",
+        "ratio": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp",
+        "vector.h": "c",
+        "random": "c"
+    }
+}

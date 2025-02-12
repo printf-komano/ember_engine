@@ -1,0 +1,698 @@
+Performing C SOURCE FILE Test HAVE_GCC_WDOCUMENTATION failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-oNJaxp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_35d95/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_35d95.dir/build.make CMakeFiles/cmTC_35d95.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-oNJaxp'
+Building C object CMakeFiles/cmTC_35d95.dir/src.c.o
+/usr/bin/cc -DHAVE_GCC_WDOCUMENTATION  -D_GNU_SOURCE=1   -Wdocumentation -std=gnu11 -o CMakeFiles/cmTC_35d95.dir/src.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-oNJaxp/src.c
+cc: error: unrecognized command-line option '-Wdocumentation'
+gmake[1]: *** [CMakeFiles/cmTC_35d95.dir/build.make:78: CMakeFiles/cmTC_35d95.dir/src.c.o] Error 1
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-oNJaxp'
+gmake: *** [Makefile:127: cmTC_35d95/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+
+Performing C SOURCE FILE Test HAVE_GCC_WDOCUMENTATION_UNKNOWN_COMMAND failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-qUFHxo
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_9a16c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_9a16c.dir/build.make CMakeFiles/cmTC_9a16c.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-qUFHxo'
+Building C object CMakeFiles/cmTC_9a16c.dir/src.c.o
+/usr/bin/cc -DHAVE_GCC_WDOCUMENTATION_UNKNOWN_COMMAND  -D_GNU_SOURCE=1   -Wdocumentation-unknown-command -std=gnu11 -o CMakeFiles/cmTC_9a16c.dir/src.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-qUFHxo/src.c
+cc: error: unrecognized command-line option '-Wdocumentation-unknown-command'
+gmake[1]: *** [CMakeFiles/cmTC_9a16c.dir/build.make:78: CMakeFiles/cmTC_9a16c.dir/src.c.o] Error 1
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-qUFHxo'
+gmake: *** [Makefile:127: cmTC_9a16c/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+
+Performing C SOURCE FILE Test HAVE_GCC_COMMENT_BLOCK_COMMANDS failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-yadaqY
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_7fabc/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_7fabc.dir/build.make CMakeFiles/cmTC_7fabc.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-yadaqY'
+Building C object CMakeFiles/cmTC_7fabc.dir/src.c.o
+/usr/bin/cc -DHAVE_GCC_COMMENT_BLOCK_COMMANDS  -D_GNU_SOURCE=1   -fcomment-block-commands=threadsafety -std=gnu11 -o CMakeFiles/cmTC_7fabc.dir/src.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-yadaqY/src.c
+cc: error: unrecognized command-line option '-fcomment-block-commands=threadsafety'
+gmake[1]: *** [CMakeFiles/cmTC_7fabc.dir/build.make:78: CMakeFiles/cmTC_7fabc.dir/src.c.o] Error 1
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-yadaqY'
+gmake: *** [Makefile:127: cmTC_7fabc/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+
+Performing C SOURCE FILE Test HAVE_CLANG_COMMENT_BLOCK_COMMANDS failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-ZrfxYb
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_5fd5a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_5fd5a.dir/build.make CMakeFiles/cmTC_5fd5a.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-ZrfxYb'
+Building C object CMakeFiles/cmTC_5fd5a.dir/src.c.o
+/usr/bin/cc -DHAVE_CLANG_COMMENT_BLOCK_COMMANDS  -D_GNU_SOURCE=1   /clang:-fcomment-block-commands=threadsafety -std=gnu11 -o CMakeFiles/cmTC_5fd5a.dir/src.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-ZrfxYb/src.c
+cc: warning: /clang:-fcomment-block-commands=threadsafety: linker input file unused because linking not done
+cc: error: /clang:-fcomment-block-commands=threadsafety: linker input file not found: No such file or directory
+gmake[1]: *** [CMakeFiles/cmTC_5fd5a.dir/build.make:78: CMakeFiles/cmTC_5fd5a.dir/src.c.o] Error 1
+gmake[1]: *** Deleting file 'CMakeFiles/cmTC_5fd5a.dir/src.c.o'
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-ZrfxYb'
+gmake: *** [Makefile:127: cmTC_5fd5a/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+
+Determining if the _i64toa exist failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-5WbZXe
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_c7605/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_c7605.dir/build.make CMakeFiles/cmTC_c7605.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-5WbZXe'
+Building C object CMakeFiles/cmTC_c7605.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -D_GNU_SOURCE=1 -std=gnu11 -o CMakeFiles/cmTC_c7605.dir/CheckSymbolExists.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-5WbZXe/CheckSymbolExists.c
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-5WbZXe/CheckSymbolExists.c: In function ‘main’:
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-5WbZXe/CheckSymbolExists.c:26:19: error: ‘_i64toa’ undeclared (first use in this function)
+   26 |   return ((int*)(&_i64toa))[argc];
+      |                   ^~~~~~~
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-5WbZXe/CheckSymbolExists.c:26:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_c7605.dir/build.make:78: CMakeFiles/cmTC_c7605.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-5WbZXe'
+gmake: *** [Makefile:127: cmTC_c7605/fast] Error 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <float.h>
+#include <iconv.h>
+#include <inttypes.h>
+#include <limits.h>
+#include <malloc.h>
+#include <math.h>
+#include <memory.h>
+#include <signal.h>
+#include <stdarg.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/types.h>
+#include <time.h>
+#include <wchar.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef _i64toa
+  return ((int*)(&_i64toa))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the itoa exist failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-rfZjxT
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_ced66/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_ced66.dir/build.make CMakeFiles/cmTC_ced66.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-rfZjxT'
+Building C object CMakeFiles/cmTC_ced66.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -D_GNU_SOURCE=1 -std=gnu11 -o CMakeFiles/cmTC_ced66.dir/CheckSymbolExists.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-rfZjxT/CheckSymbolExists.c
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-rfZjxT/CheckSymbolExists.c: In function ‘main’:
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-rfZjxT/CheckSymbolExists.c:26:19: error: ‘itoa’ undeclared (first use in this function)
+   26 |   return ((int*)(&itoa))[argc];
+      |                   ^~~~
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-rfZjxT/CheckSymbolExists.c:26:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_ced66.dir/build.make:78: CMakeFiles/cmTC_ced66.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-rfZjxT'
+gmake: *** [Makefile:127: cmTC_ced66/fast] Error 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <float.h>
+#include <iconv.h>
+#include <inttypes.h>
+#include <limits.h>
+#include <malloc.h>
+#include <math.h>
+#include <memory.h>
+#include <signal.h>
+#include <stdarg.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/types.h>
+#include <time.h>
+#include <wchar.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef itoa
+  return ((int*)(&itoa))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the _ltoa exist failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-hRtLfh
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_d894d/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_d894d.dir/build.make CMakeFiles/cmTC_d894d.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-hRtLfh'
+Building C object CMakeFiles/cmTC_d894d.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -D_GNU_SOURCE=1 -std=gnu11 -o CMakeFiles/cmTC_d894d.dir/CheckSymbolExists.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-hRtLfh/CheckSymbolExists.c
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-hRtLfh/CheckSymbolExists.c: In function ‘main’:
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-hRtLfh/CheckSymbolExists.c:26:19: error: ‘_ltoa’ undeclared (first use in this function)
+   26 |   return ((int*)(&_ltoa))[argc];
+      |                   ^~~~~
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-hRtLfh/CheckSymbolExists.c:26:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_d894d.dir/build.make:78: CMakeFiles/cmTC_d894d.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-hRtLfh'
+gmake: *** [Makefile:127: cmTC_d894d/fast] Error 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <float.h>
+#include <iconv.h>
+#include <inttypes.h>
+#include <limits.h>
+#include <malloc.h>
+#include <math.h>
+#include <memory.h>
+#include <signal.h>
+#include <stdarg.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/types.h>
+#include <time.h>
+#include <wchar.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef _ltoa
+  return ((int*)(&_ltoa))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the sqr exist failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-DJXcuA
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_7ef0a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_7ef0a.dir/build.make CMakeFiles/cmTC_7ef0a.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-DJXcuA'
+Building C object CMakeFiles/cmTC_7ef0a.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -D_GNU_SOURCE=1 -std=gnu11 -o CMakeFiles/cmTC_7ef0a.dir/CheckSymbolExists.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-DJXcuA/CheckSymbolExists.c
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-DJXcuA/CheckSymbolExists.c: In function ‘main’:
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-DJXcuA/CheckSymbolExists.c:26:19: error: ‘sqr’ undeclared (first use in this function); did you mean ‘sqrt’?
+   26 |   return ((int*)(&sqr))[argc];
+      |                   ^~~
+      |                   sqrt
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-DJXcuA/CheckSymbolExists.c:26:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_7ef0a.dir/build.make:78: CMakeFiles/cmTC_7ef0a.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-DJXcuA'
+gmake: *** [Makefile:127: cmTC_7ef0a/fast] Error 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <float.h>
+#include <iconv.h>
+#include <inttypes.h>
+#include <limits.h>
+#include <malloc.h>
+#include <math.h>
+#include <memory.h>
+#include <signal.h>
+#include <stdarg.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/types.h>
+#include <time.h>
+#include <wchar.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef sqr
+  return ((int*)(&sqr))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the strlcat exist failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-5LQcUd
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_c059a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_c059a.dir/build.make CMakeFiles/cmTC_c059a.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-5LQcUd'
+Building C object CMakeFiles/cmTC_c059a.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -D_GNU_SOURCE=1 -std=gnu11 -o CMakeFiles/cmTC_c059a.dir/CheckSymbolExists.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-5LQcUd/CheckSymbolExists.c
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-5LQcUd/CheckSymbolExists.c: In function ‘main’:
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-5LQcUd/CheckSymbolExists.c:26:19: error: ‘strlcat’ undeclared (first use in this function); did you mean ‘strncat’?
+   26 |   return ((int*)(&strlcat))[argc];
+      |                   ^~~~~~~
+      |                   strncat
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-5LQcUd/CheckSymbolExists.c:26:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_c059a.dir/build.make:78: CMakeFiles/cmTC_c059a.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-5LQcUd'
+gmake: *** [Makefile:127: cmTC_c059a/fast] Error 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <float.h>
+#include <iconv.h>
+#include <inttypes.h>
+#include <limits.h>
+#include <malloc.h>
+#include <math.h>
+#include <memory.h>
+#include <signal.h>
+#include <stdarg.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/types.h>
+#include <time.h>
+#include <wchar.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef strlcat
+  return ((int*)(&strlcat))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the strlcpy exist failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-K31WgH
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_937c9/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_937c9.dir/build.make CMakeFiles/cmTC_937c9.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-K31WgH'
+Building C object CMakeFiles/cmTC_937c9.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -D_GNU_SOURCE=1 -std=gnu11 -o CMakeFiles/cmTC_937c9.dir/CheckSymbolExists.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-K31WgH/CheckSymbolExists.c
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-K31WgH/CheckSymbolExists.c: In function ‘main’:
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-K31WgH/CheckSymbolExists.c:26:19: error: ‘strlcpy’ undeclared (first use in this function); did you mean ‘strncpy’?
+   26 |   return ((int*)(&strlcpy))[argc];
+      |                   ^~~~~~~
+      |                   strncpy
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-K31WgH/CheckSymbolExists.c:26:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_937c9.dir/build.make:78: CMakeFiles/cmTC_937c9.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-K31WgH'
+gmake: *** [Makefile:127: cmTC_937c9/fast] Error 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <float.h>
+#include <iconv.h>
+#include <inttypes.h>
+#include <limits.h>
+#include <malloc.h>
+#include <math.h>
+#include <memory.h>
+#include <signal.h>
+#include <stdarg.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/types.h>
+#include <time.h>
+#include <wchar.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef strlcpy
+  return ((int*)(&strlcpy))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the strnstr exist failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-4WcgAs
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_f469a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_f469a.dir/build.make CMakeFiles/cmTC_f469a.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-4WcgAs'
+Building C object CMakeFiles/cmTC_f469a.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -D_GNU_SOURCE=1 -std=gnu11 -o CMakeFiles/cmTC_f469a.dir/CheckSymbolExists.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-4WcgAs/CheckSymbolExists.c
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-4WcgAs/CheckSymbolExists.c: In function ‘main’:
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-4WcgAs/CheckSymbolExists.c:26:19: error: ‘strnstr’ undeclared (first use in this function); did you mean ‘strstr’?
+   26 |   return ((int*)(&strnstr))[argc];
+      |                   ^~~~~~~
+      |                   strstr
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-4WcgAs/CheckSymbolExists.c:26:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_f469a.dir/build.make:78: CMakeFiles/cmTC_f469a.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-4WcgAs'
+gmake: *** [Makefile:127: cmTC_f469a/fast] Error 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <float.h>
+#include <iconv.h>
+#include <inttypes.h>
+#include <limits.h>
+#include <malloc.h>
+#include <math.h>
+#include <memory.h>
+#include <signal.h>
+#include <stdarg.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/types.h>
+#include <time.h>
+#include <wchar.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef strnstr
+  return ((int*)(&strnstr))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the wcslcat exist failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-1dc785
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_b25c2/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_b25c2.dir/build.make CMakeFiles/cmTC_b25c2.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-1dc785'
+Building C object CMakeFiles/cmTC_b25c2.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -D_GNU_SOURCE=1 -std=gnu11 -o CMakeFiles/cmTC_b25c2.dir/CheckSymbolExists.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-1dc785/CheckSymbolExists.c
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-1dc785/CheckSymbolExists.c: In function ‘main’:
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-1dc785/CheckSymbolExists.c:26:19: error: ‘wcslcat’ undeclared (first use in this function); did you mean ‘wcsncat’?
+   26 |   return ((int*)(&wcslcat))[argc];
+      |                   ^~~~~~~
+      |                   wcsncat
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-1dc785/CheckSymbolExists.c:26:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_b25c2.dir/build.make:78: CMakeFiles/cmTC_b25c2.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-1dc785'
+gmake: *** [Makefile:127: cmTC_b25c2/fast] Error 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <float.h>
+#include <iconv.h>
+#include <inttypes.h>
+#include <limits.h>
+#include <malloc.h>
+#include <math.h>
+#include <memory.h>
+#include <signal.h>
+#include <stdarg.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/types.h>
+#include <time.h>
+#include <wchar.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef wcslcat
+  return ((int*)(&wcslcat))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the wcslcpy exist failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-ZbnwOg
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_62055/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_62055.dir/build.make CMakeFiles/cmTC_62055.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-ZbnwOg'
+Building C object CMakeFiles/cmTC_62055.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -D_GNU_SOURCE=1 -std=gnu11 -o CMakeFiles/cmTC_62055.dir/CheckSymbolExists.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-ZbnwOg/CheckSymbolExists.c
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-ZbnwOg/CheckSymbolExists.c: In function ‘main’:
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-ZbnwOg/CheckSymbolExists.c:26:19: error: ‘wcslcpy’ undeclared (first use in this function); did you mean ‘wcsncpy’?
+   26 |   return ((int*)(&wcslcpy))[argc];
+      |                   ^~~~~~~
+      |                   wcsncpy
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-ZbnwOg/CheckSymbolExists.c:26:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_62055.dir/build.make:78: CMakeFiles/cmTC_62055.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-ZbnwOg'
+gmake: *** [Makefile:127: cmTC_62055/fast] Error 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <float.h>
+#include <iconv.h>
+#include <inttypes.h>
+#include <limits.h>
+#include <malloc.h>
+#include <math.h>
+#include <memory.h>
+#include <signal.h>
+#include <stdarg.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/types.h>
+#include <time.h>
+#include <wchar.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef wcslcpy
+  return ((int*)(&wcslcpy))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the sysctlbyname exist failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-imBBDo
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_d487d/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_d487d.dir/build.make CMakeFiles/cmTC_d487d.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-imBBDo'
+Building C object CMakeFiles/cmTC_d487d.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -D_GNU_SOURCE=1 -std=gnu11 -o CMakeFiles/cmTC_d487d.dir/CheckSymbolExists.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-imBBDo/CheckSymbolExists.c
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-imBBDo/CheckSymbolExists.c:3:10: fatal error: sys/sysctl.h: No such file or directory
+    3 | #include <sys/sysctl.h>
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
+gmake[1]: *** [CMakeFiles/cmTC_d487d.dir/build.make:78: CMakeFiles/cmTC_d487d.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-imBBDo'
+gmake: *** [Makefile:127: cmTC_d487d/fast] Error 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <sys/types.h>
+#include <sys/sysctl.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef sysctlbyname
+  return ((int*)(&sysctlbyname))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the elf_aux_info exist failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-3XGl6E
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_7b39e/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_7b39e.dir/build.make CMakeFiles/cmTC_7b39e.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-3XGl6E'
+Building C object CMakeFiles/cmTC_7b39e.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -D_GNU_SOURCE=1 -std=gnu11 -o CMakeFiles/cmTC_7b39e.dir/CheckSymbolExists.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-3XGl6E/CheckSymbolExists.c
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-3XGl6E/CheckSymbolExists.c: In function ‘main’:
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-3XGl6E/CheckSymbolExists.c:8:19: error: ‘elf_aux_info’ undeclared (first use in this function)
+    8 |   return ((int*)(&elf_aux_info))[argc];
+      |                   ^~~~~~~~~~~~
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-3XGl6E/CheckSymbolExists.c:8:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_7b39e.dir/build.make:78: CMakeFiles/cmTC_7b39e.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-3XGl6E'
+gmake: *** [Makefile:127: cmTC_7b39e/fast] Error 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <sys/auxv.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef elf_aux_info
+  return ((int*)(&elf_aux_info))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Performing C SOURCE FILE Test ICONV_IN_LIBICONV failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-2KwvQ7
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_54f7c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_54f7c.dir/build.make CMakeFiles/cmTC_54f7c.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-2KwvQ7'
+Building C object CMakeFiles/cmTC_54f7c.dir/src.c.o
+/usr/bin/cc -DICONV_IN_LIBICONV  -D_GNU_SOURCE=1 -std=gnu11 -o CMakeFiles/cmTC_54f7c.dir/src.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-2KwvQ7/src.c
+Linking C executable cmTC_54f7c
+/home/decaianinfinity/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_54f7c.dir/link.txt --verbose=1
+/usr/bin/cc   -D_GNU_SOURCE=1 CMakeFiles/cmTC_54f7c.dir/src.c.o -o cmTC_54f7c  -liconv 
+/usr/bin/ld: cannot find -liconv: No such file or directory
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [CMakeFiles/cmTC_54f7c.dir/build.make:99: cmTC_54f7c] Error 1
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-2KwvQ7'
+gmake: *** [Makefile:127: cmTC_54f7c/fast] Error 2
+
+
+Source file was:
+
+        #include <stddef.h>
+        #include <iconv.h>
+        int main(int argc, char **argv) {
+            return !iconv_open(NULL,NULL);
+        }
+
+Determining if the include file libudev.h exists failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-t7HATM
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_2e95c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_2e95c.dir/build.make CMakeFiles/cmTC_2e95c.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-t7HATM'
+Building C object CMakeFiles/cmTC_2e95c.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -D_GNU_SOURCE=1 -std=gnu11 -o CMakeFiles/cmTC_2e95c.dir/CheckIncludeFile.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-t7HATM/CheckIncludeFile.c
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-t7HATM/CheckIncludeFile.c:1:10: fatal error: libudev.h: No such file or directory
+    1 | #include <libudev.h>
+      |          ^~~~~~~~~~~
+compilation terminated.
+gmake[1]: *** [CMakeFiles/cmTC_2e95c.dir/build.make:78: CMakeFiles/cmTC_2e95c.dir/CheckIncludeFile.c.o] Error 1
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-t7HATM'
+gmake: *** [Makefile:127: cmTC_2e95c/fast] Error 2
+
+
+
+Performing C SOURCE FILE Test LIBC_HAS_WORKING_LIBUNWIND failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-nW6W4q
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_fd1d9/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_fd1d9.dir/build.make CMakeFiles/cmTC_fd1d9.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-nW6W4q'
+Building C object CMakeFiles/cmTC_fd1d9.dir/src.c.o
+/usr/bin/cc -DLIBC_HAS_WORKING_LIBUNWIND  -D_GNU_SOURCE=1 -std=gnu11 -o CMakeFiles/cmTC_fd1d9.dir/src.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-nW6W4q/src.c
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-nW6W4q/src.c:1:16: fatal error: libunwind.h: No such file or directory
+    1 |       #include <libunwind.h>
+      |                ^~~~~~~~~~~~~
+compilation terminated.
+gmake[1]: *** [CMakeFiles/cmTC_fd1d9.dir/build.make:78: CMakeFiles/cmTC_fd1d9.dir/src.c.o] Error 1
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-nW6W4q'
+gmake: *** [Makefile:127: cmTC_fd1d9/fast] Error 2
+
+
+Source file was:
+      #include <libunwind.h>
+      int main(int argc, char *argv[]) {
+        (void)argc; (void)argv;
+        unw_context_t context;
+        unw_cursor_t cursor;
+        unw_word_t pc;
+        char sym[256];
+        unw_word_t offset;
+        unw_getcontext(&context);
+        unw_step(&cursor);
+        unw_get_reg(&cursor, UNW_REG_IP, &pc);
+        unw_get_proc_name(&cursor, sym, sizeof(sym), &offset);
+        return 0;
+      }
+
+Performing C SOURCE FILE Test LIBUNWIND_HAS_WORKINGLIBUNWIND failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-wGpXy7
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_8fcc4/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_8fcc4.dir/build.make CMakeFiles/cmTC_8fcc4.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-wGpXy7'
+Building C object CMakeFiles/cmTC_8fcc4.dir/src.c.o
+/usr/bin/cc -DLIBUNWIND_HAS_WORKINGLIBUNWIND  -D_GNU_SOURCE=1 -std=gnu11 -o CMakeFiles/cmTC_8fcc4.dir/src.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-wGpXy7/src.c
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-wGpXy7/src.c:1:16: fatal error: libunwind.h: No such file or directory
+    1 |       #include <libunwind.h>
+      |                ^~~~~~~~~~~~~
+compilation terminated.
+gmake[1]: *** [CMakeFiles/cmTC_8fcc4.dir/build.make:78: CMakeFiles/cmTC_8fcc4.dir/src.c.o] Error 1
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-wGpXy7'
+gmake: *** [Makefile:127: cmTC_8fcc4/fast] Error 2
+
+
+Source file was:
+      #include <libunwind.h>
+      int main(int argc, char *argv[]) {
+        (void)argc; (void)argv;
+        unw_context_t context;
+        unw_cursor_t cursor;
+        unw_word_t pc;
+        char sym[256];
+        unw_word_t offset;
+        unw_getcontext(&context);
+        unw_step(&cursor);
+        unw_get_reg(&cursor, UNW_REG_IP, &pc);
+        unw_get_proc_name(&cursor, sym, sizeof(sym), &offset);
+        return 0;
+      }
+
+Determining if the include file pthread_np.h exists failed with the following output:
+Change Dir: /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-2oXJXH
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_9976d/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_9976d.dir/build.make CMakeFiles/cmTC_9976d.dir/build
+gmake[1]: Entering directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-2oXJXH'
+Building C object CMakeFiles/cmTC_9976d.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -D_GNU_SOURCE=1 -D_REENTRANT -pthread -std=gnu11 -o CMakeFiles/cmTC_9976d.dir/CheckIncludeFile.c.o -c /home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-2oXJXH/CheckIncludeFile.c
+/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-2oXJXH/CheckIncludeFile.c:1:10: fatal error: pthread_np.h: No such file or directory
+    1 | #include <pthread_np.h>
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
+gmake[1]: *** [CMakeFiles/cmTC_9976d.dir/build.make:78: CMakeFiles/cmTC_9976d.dir/CheckIncludeFile.c.o] Error 1
+gmake[1]: Leaving directory '/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/CMakeScratch/TryCompile-2oXJXH'
+gmake: *** [Makefile:127: cmTC_9976d/fast] Error 2
+
+
+
