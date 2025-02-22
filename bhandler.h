@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "utils/vector.h"
 #include "model/model.h"
+#include "scene.h"
 
 #define VB_ATTRIB_POS_OFFSET 0
 #define VB_ATTRIB_CLR_OFFSET 1
@@ -27,6 +28,7 @@ typedef struct  //batch handler
     uint32_t eb_len; //the actual number of bytes being used
     uint32_t eb_capacity; //all avilable bytes
 
+    scene s;
     vec models;
 } bhandler;
 
