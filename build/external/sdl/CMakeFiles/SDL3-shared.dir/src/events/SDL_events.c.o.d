@@ -29,4 +29,8 @@ external/sdl/CMakeFiles/SDL3-shared.dir/src/events/SDL_events.c.o: \
  /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/events/../camera/../SDL_internal.h \
  /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/events/../timer/SDL_timer_c.h \
  /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/events/../joystick/SDL_joystick_c.h \
- /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/events/../sensor/SDL_sensor_c.h
+ /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/events/../sensor/SDL_sensor_c.h \
+ /usr/include/X11/Xlib.h /usr/include/x86_64-linux-gnu/sys/types.h \
+ /usr/include/X11/X.h /usr/include/X11/Xfuncproto.h \
+ /usr/include/X11/Xosdefs.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h

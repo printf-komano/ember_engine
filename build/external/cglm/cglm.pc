@@ -6,6 +6,6 @@ includedir=${prefix}/include
 Name: cglm
 Description: OpenGL Mathematics (glm) for C
 URL: https://github.com/recp/cglm
-Version: 0.9.5
+Version: 0.9.6
 Cflags: -I${includedir}
 Libs: -L${libdir} -lcglm 

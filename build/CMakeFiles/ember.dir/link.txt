@@ -1,1 +1,1 @@
-/usr/bin/cc CMakeFiles/ember.dir/main.c.o -o ember  -Wl,-rpath,/home/decaianinfinity/_programming_/ember_engine/build/external/sdl:/home/decaianinfinity/_programming_/ember_engine/build/external/cglm external/sdl/libSDL3.so.0.2.5 external/cglm/libcglm.so.0.9.5 
+/usr/bin/cc CMakeFiles/ember.dir/main.c.o -o ember  -Wl,-rpath,/home/decaianinfinity/_programming_/ember_engine/build/external/sdl:/home/decaianinfinity/_programming_/ember_engine/build/external/cglm external/sdl/libSDL3.so.0.2.5 libglad.a /usr/lib/x86_64-linux-gnu/libGL.so external/cglm/libcglm.so.0.9.6 -lm 

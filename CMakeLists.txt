@@ -7,6 +7,13 @@ set(CMAKE_C_STANDARD 11)
 add_subdirectory(external/sdl)
 include_directories(external/sdl/include)
 
+#opengl
+find_package(OpenGL REQUIRED)
+
+# glad
+add_library(glad external/glad/src/gl.c)
+target_include_directories(glad PUBLIC external/glad/include)
+
 # cglm
 add_subdirectory(external/cglm)
 include_directories(external/cglm/include)
@@ -15,4 +22,4 @@ include_directories(external/cglm/include)
 add_executable(ember main.c)
 
 # libs
-target_link_libraries(ember SDL3-shared cglm)
+target_link_libraries(ember SDL3-shared glad OpenGL::GL cglm m)

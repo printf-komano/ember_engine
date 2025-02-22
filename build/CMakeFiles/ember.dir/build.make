@@ -93,7 +93,9 @@ ember_EXTERNAL_OBJECTS =
 ember: CMakeFiles/ember.dir/main.c.o
 ember: CMakeFiles/ember.dir/build.make
 ember: external/sdl/libSDL3.so.0.2.5
-ember: external/cglm/libcglm.so.0.9.5
+ember: libglad.a
+ember: /usr/lib/x86_64-linux-gnu/libGL.so
+ember: external/cglm/libcglm.so.0.9.6
 ember: /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/dynapi/SDL_dynapi.sym
 ember: CMakeFiles/ember.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable ember"

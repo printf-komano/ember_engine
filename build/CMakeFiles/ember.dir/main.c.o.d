@@ -92,13 +92,10 @@ CMakeFiles/ember.dir/main.c.o: \
  /home/decaianinfinity/_programming_/ember_engine/external/sdl/include/SDL3/SDL_tray.h \
  /home/decaianinfinity/_programming_/ember_engine/external/sdl/include/SDL3/SDL_version.h \
  /home/decaianinfinity/_programming_/ember_engine/external/sdl/include/SDL3/SDL_oldnames.h \
- /home/decaianinfinity/_programming_/ember_engine/external/sdl/include/SDL3/SDL_opengl.h \
- /home/decaianinfinity/_programming_/ember_engine/external/sdl/include/SDL3/SDL_opengl_glext.h \
- /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
- /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
- /home/decaianinfinity/_programming_/ember_engine/utils/vector.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/glad/include/glad/gl.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/glad/include/KHR/khrplatform.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/cglm.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/common.h \
  /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
  /usr/include/x86_64-linux-gnu/sys/types.h \
@@ -118,4 +115,94 @@ CMakeFiles/ember.dir/main.c.o: \
  /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h /usr/include/alloca.h \
- /usr/include/x86_64-linux-gnu/bits/stdlib-float.h
+ /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/math.h \
+ /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+ /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
+ /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/types.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stdalign.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/simd/intrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/simd/x86.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/simd/intrin.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/vec2.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/util.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/vec2-ext.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/vec3.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/vec4.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/vec4-ext.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/vec3-ext.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/ivec2.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/ivec3.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/ivec4.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/mat4.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/simd/sse2/mat4.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/simd/sse2/../../common.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/simd/sse2/../intrin.h \
+ /usr/include/assert.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/mat4x2.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/mat4x3.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/mat3.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/simd/sse2/mat3.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/mat3x2.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/mat3x4.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/mat2.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/simd/sse2/mat2.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/mat2x3.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/mat2x4.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/affine.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/affine-mat.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/simd/sse2/affine.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/affine-pre.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/affine-post.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/cam.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/plane.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/clipspace/persp.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/clipspace/../common.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/clipspace/../plane.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/clipspace/../mat4.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/clipspace/ortho_rh_no.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/clipspace/persp_rh_no.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/clipspace/persp.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/clipspace/view_rh_no.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/clipspace/view_rh.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/frustum.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/quat.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/simd/sse2/quat.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/euler.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/handed/euler_to_quat_rh.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/handed/../common.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/noise.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/aabb2d.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/box.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/color.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/io.h \
+ /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
+ /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/project.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/clipspace/project_no.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/clipspace/../vec3.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/clipspace/../vec4.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/sphere.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/ease.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/curve.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/bezier.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/ray.h \
+ /home/decaianinfinity/_programming_/ember_engine/external/cglm/include/cglm/affine2d.h \
+ /home/decaianinfinity/_programming_/ember_engine/utils/vector.h \
+ /home/decaianinfinity/_programming_/ember_engine/utils/shader_reader.h \
+ /home/decaianinfinity/_programming_/ember_engine/bhandler.h \
+ /home/decaianinfinity/_programming_/ember_engine/model/model.h \
+ /home/decaianinfinity/_programming_/ember_engine/model/camera.h \
+ /home/decaianinfinity/_programming_/ember_engine/input.c \
+ /home/decaianinfinity/_programming_/ember_engine/app.c

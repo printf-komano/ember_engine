@@ -56,7 +56,7 @@ set_target_properties(cglm::cglm PROPERTIES
 # Import target "cglm::cglm" for configuration ""
 set_property(TARGET cglm::cglm APPEND PROPERTY IMPORTED_CONFIGURATIONS NOCONFIG)
 set_target_properties(cglm::cglm PROPERTIES
-  IMPORTED_LOCATION_NOCONFIG "/home/decaianinfinity/_programming_/ember_engine/build/external/cglm/libcglm.so.0.9.5"
+  IMPORTED_LOCATION_NOCONFIG "/home/decaianinfinity/_programming_/ember_engine/build/external/cglm/libcglm.so.0.9.6"
   IMPORTED_SONAME_NOCONFIG "libcglm.so.0"
   )
 

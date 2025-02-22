@@ -44,7 +44,7 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   foreach(file
-      "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libcglm.so.0.9.5"
+      "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libcglm.so.0.9.6"
       "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libcglm.so.0"
       )
     if(EXISTS "${file}" AND
@@ -55,11 +55,11 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     endif()
   endforeach()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES
-    "/home/decaianinfinity/_programming_/ember_engine/build/external/cglm/libcglm.so.0.9.5"
+    "/home/decaianinfinity/_programming_/ember_engine/build/external/cglm/libcglm.so.0.9.6"
     "/home/decaianinfinity/_programming_/ember_engine/build/external/cglm/libcglm.so.0"
     )
   foreach(file
-      "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libcglm.so.0.9.5"
+      "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libcglm.so.0.9.6"
       "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libcglm.so.0"
       )
     if(EXISTS "${file}" AND

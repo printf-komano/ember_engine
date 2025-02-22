@@ -765,62 +765,62 @@ cglm_OBJECTS = \
 # External object files for target cglm
 cglm_EXTERNAL_OBJECTS =
 
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/euler.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/affine.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/io.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/quat.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/cam.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/vec2.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/ivec2.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/vec3.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/ivec3.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/vec4.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/ivec4.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/mat2.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/mat2x3.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/mat2x4.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/mat3.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/mat3x2.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/mat3x4.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/mat4.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/mat4x2.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/mat4x3.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/plane.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/noise.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/frustum.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/box.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/aabb2d.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/project.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/sphere.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/ease.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/curve.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/bezier.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/ray.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/affine2d.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/clipspace/ortho_lh_no.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/clipspace/ortho_lh_zo.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/clipspace/ortho_rh_no.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/clipspace/ortho_rh_zo.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/clipspace/persp_lh_no.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/clipspace/persp_lh_zo.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/clipspace/persp_rh_no.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/clipspace/persp_rh_zo.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/clipspace/view_lh_no.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/clipspace/view_lh_zo.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/clipspace/view_rh_no.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/clipspace/view_rh_zo.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/clipspace/project_no.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/src/clipspace/project_zo.c.o
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/build.make
-external/cglm/libcglm.so.0.9.5: external/cglm/CMakeFiles/cglm.dir/link.txt
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/euler.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/affine.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/io.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/quat.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/cam.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/vec2.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/ivec2.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/vec3.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/ivec3.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/vec4.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/ivec4.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/mat2.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/mat2x3.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/mat2x4.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/mat3.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/mat3x2.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/mat3x4.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/mat4.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/mat4x2.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/mat4x3.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/plane.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/noise.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/frustum.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/box.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/aabb2d.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/project.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/sphere.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/ease.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/curve.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/bezier.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/ray.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/affine2d.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/clipspace/ortho_lh_no.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/clipspace/ortho_lh_zo.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/clipspace/ortho_rh_no.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/clipspace/ortho_rh_zo.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/clipspace/persp_lh_no.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/clipspace/persp_lh_zo.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/clipspace/persp_rh_no.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/clipspace/persp_rh_zo.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/clipspace/view_lh_no.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/clipspace/view_lh_zo.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/clipspace/view_rh_no.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/clipspace/view_rh_zo.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/clipspace/project_no.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/src/clipspace/project_zo.c.o
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/build.make
+external/cglm/libcglm.so.0.9.6: external/cglm/CMakeFiles/cglm.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Linking C shared library libcglm.so"
 	cd /home/decaianinfinity/_programming_/ember_engine/build/external/cglm && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cglm.dir/link.txt --verbose=$(VERBOSE)
-	cd /home/decaianinfinity/_programming_/ember_engine/build/external/cglm && $(CMAKE_COMMAND) -E cmake_symlink_library libcglm.so.0.9.5 libcglm.so.0 libcglm.so
+	cd /home/decaianinfinity/_programming_/ember_engine/build/external/cglm && $(CMAKE_COMMAND) -E cmake_symlink_library libcglm.so.0.9.6 libcglm.so.0 libcglm.so
 
-external/cglm/libcglm.so.0: external/cglm/libcglm.so.0.9.5
+external/cglm/libcglm.so.0: external/cglm/libcglm.so.0.9.6
 	@$(CMAKE_COMMAND) -E touch_nocreate external/cglm/libcglm.so.0
 
-external/cglm/libcglm.so: external/cglm/libcglm.so.0.9.5
+external/cglm/libcglm.so: external/cglm/libcglm.so.0.9.6
 	@$(CMAKE_COMMAND) -E touch_nocreate external/cglm/libcglm.so
 
 # Rule to build all files generated by this target.

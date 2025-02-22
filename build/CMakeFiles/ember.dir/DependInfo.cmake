@@ -14,6 +14,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/decaianinfinity/_programming_/ember_engine/build/external/sdl/CMakeFiles/SDL3-shared.dir/DependInfo.cmake"
+  "/home/decaianinfinity/_programming_/ember_engine/build/CMakeFiles/glad.dir/DependInfo.cmake"
   "/home/decaianinfinity/_programming_/ember_engine/build/external/cglm/CMakeFiles/cglm.dir/DependInfo.cmake"
   )
 

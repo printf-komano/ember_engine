@@ -25,13 +25,15 @@ vec vec_alloc(size_t elem_size, size_t capacity){
     return v;
 }
 
-void vec_push(vec *v, void *value){
+//push value in the vector 
+void* vec_push(vec *v, void *value){
     if(v->len >= v->capacity){
         v->capacity *= 2;
         v->data = realloc(v->data,v->capacity*v->elem_size);
     }
     memcpy((char*)v->data + v->len*v->elem_size,value,v->elem_size);
     ++v->len;
+    return (char*)v->data + v->len*v->elem_size;
 }
 
 void vec_pop(vec * v){ v->len -= v->len>0; }
@@ -57,3 +59,6 @@ void * vec_get(vec *v, size_t index) {
 
 //macro to get value directly (without length check)
 #define VEC_AT(v, type, index) (*(type*) ((char*)(v)->data + (index) * (v)->elem_size) )
+
+//macro to get value directly (without length check)
+#define VEC_GETPTR(v, type, index) ((type*) ((char*)(v)->data + (index) * (v)->elem_size) )

@@ -182,6 +182,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named glad
+
+# Build rule for target.
+glad: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 glad
+.PHONY : glad
+
+# fast build rule for target.
+glad/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/glad.dir/build.make CMakeFiles/glad.dir/build
+.PHONY : glad/fast
+
+#=============================================================================
 # Target rules for targets named ember
 
 # Build rule for target.
@@ -246,6 +259,30 @@ cglm/fast:
 	$(MAKE) $(MAKESILENT) -f external/cglm/CMakeFiles/cglm.dir/build.make external/cglm/CMakeFiles/cglm.dir/build
 .PHONY : cglm/fast
 
+external/glad/src/gl.o: external/glad/src/gl.c.o
+.PHONY : external/glad/src/gl.o
+
+# target to build an object file
+external/glad/src/gl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/glad.dir/build.make CMakeFiles/glad.dir/external/glad/src/gl.c.o
+.PHONY : external/glad/src/gl.c.o
+
+external/glad/src/gl.i: external/glad/src/gl.c.i
+.PHONY : external/glad/src/gl.i
+
+# target to preprocess a source file
+external/glad/src/gl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/glad.dir/build.make CMakeFiles/glad.dir/external/glad/src/gl.c.i
+.PHONY : external/glad/src/gl.c.i
+
+external/glad/src/gl.s: external/glad/src/gl.c.s
+.PHONY : external/glad/src/gl.s
+
+# target to generate assembly for a file
+external/glad/src/gl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/glad.dir/build.make CMakeFiles/glad.dir/external/glad/src/gl.c.s
+.PHONY : external/glad/src/gl.c.s
+
 main.o: main.c.o
 .PHONY : main.o
 
@@ -289,6 +326,10 @@ help:
 	@echo "... SDL_uclibc"
 	@echo "... cglm"
 	@echo "... ember"
+	@echo "... glad"
+	@echo "... external/glad/src/gl.o"
+	@echo "... external/glad/src/gl.i"
+	@echo "... external/glad/src/gl.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

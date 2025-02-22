@@ -1323,7 +1323,13 @@ external/sdl/CMakeFiles/SDL3-shared.dir/src/events/SDL_events.c.o: external/sdl/
   /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/SDL_internal.h \
   /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/timer/SDL_timer_c.h \
   /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/joystick/SDL_joystick_c.h \
-  /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/sensor/SDL_sensor_c.h
+  /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/sensor/SDL_sensor_c.h \
+  /usr/include/X11/Xlib.h \
+  /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/include/X11/X.h \
+  /usr/include/X11/Xfuncproto.h \
+  /usr/include/X11/Xosdefs.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h
 
 external/sdl/CMakeFiles/SDL3-shared.dir/src/events/SDL_keyboard.c.o: external/sdl/CMakeFiles/SDL3-shared.dir/cmake_pch.h \
   /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/events/SDL_keyboard.c \
@@ -6906,10 +6912,6 @@ external/sdl/CMakeFiles/SDL3-shared.dir/src/video/yuv2rgb/yuv_rgb_std.c.o: exter
 
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/render/vulkan/SDL_shaders_vulkan.h:
 
-/usr/include/X11/Xosdefs.h:
-
-/usr/include/X11/X.h:
-
 /usr/include/x86_64-linux-gnu/bits/uio-ext.h:
 
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/video/SDL_vulkan_internal.h:
@@ -6988,10 +6990,6 @@ external/sdl/CMakeFiles/SDL3-shared.dir/src/video/yuv2rgb/yuv_rgb_std.c.o: exter
 
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/render/gpu/SDL_pipeline_gpu.c:
 
-/usr/include/X11/Xlib.h:
-
-/home/decaianinfinity/_programming_/ember_engine/external/sdl/src/render/direct3d/SDL_shaders_d3d.c:
-
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/render/direct3d/SDL_render_d3d.c:
 
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/render/SDL_yuv_sw.c:
@@ -7052,6 +7050,8 @@ external/sdl/CMakeFiles/SDL3-shared.dir/src/video/yuv2rgb/yuv_rgb_std.c.o: exter
 
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/joystick/hidapi/SDL_hidapi_stadia.c:
 
+/home/decaianinfinity/_programming_/ember_engine/external/sdl/src/joystick/hidapi/SDL_hidapi_ps3.c:
+
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/video/SDL_sysvideo.h:
 
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/include/SDL3/SDL_clipboard.h:
@@ -7103,6 +7103,12 @@ external/sdl/include-revision/SDL3/SDL_revision.h:
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/video/khronos/vulkan/vulkan_core.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/keylockerintrin.h:
+
+/home/decaianinfinity/_programming_/ember_engine/external/sdl/src/render/direct3d12/SDL_render_d3d12.c:
+
+/home/decaianinfinity/_programming_/ember_engine/external/sdl/src/joystick/hidapi/SDL_hidapi_ps5.c:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/vaesintrin.h:
 
 /usr/include/string.h:
 
@@ -7169,6 +7175,12 @@ external/sdl/CMakeFiles/SDL3-shared.dir/cmake_pch.h:
 /usr/include/x86_64-linux-gnu/sys/auxv.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/uintrintrin.h:
+
+/usr/include/xcb/xcb.h:
+
+/home/decaianinfinity/_programming_/ember_engine/external/sdl/src/joystick/hidapi/SDL_hidapi_ps4.c:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/tsxldtrkintrin.h:
 
@@ -7249,10 +7261,6 @@ external/sdl/CMakeFiles/SDL3-shared.dir/cmake_pch.h.c:
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/core/linux/SDL_ime.h:
 
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
-
-/usr/include/X11/Xfuncproto.h:
-
-/home/decaianinfinity/_programming_/ember_engine/external/sdl/src/render/SDL_yuv_sw_c.h:
 
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/core/linux/SDL_evdev.h:
 
@@ -7375,8 +7383,6 @@ external/sdl/CMakeFiles/SDL3-shared.dir/cmake_pch.h.c:
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/events/SDL_keymap.c:
 
 /usr/include/x86_64-linux-gnu/sys/select.h:
-
-/home/decaianinfinity/_programming_/ember_engine/external/sdl/src/joystick/hidapi/SDL_hidapi_ps3.c:
 
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
 
@@ -7656,6 +7662,16 @@ external/sdl/include-config-/build_config/SDL_build_config.h:
 
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/audio/dummy/SDL_dummyaudio.h:
 
+/home/decaianinfinity/_programming_/ember_engine/external/sdl/src/video/SDL_blit_auto.h:
+
+/home/decaianinfinity/_programming_/ember_engine/external/sdl/src/joystick/hidapi/SDL_hidapi_rumble.c:
+
+/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/dirent_ext.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/cetintrin.h:
+
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/power/linux/SDL_syspower.c:
 
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/include/SDL3/SDL_asyncio.h:
@@ -7685,12 +7701,6 @@ external/sdl/include-config-/build_config/SDL_build_config.h:
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/include/SDL3/SDL_mutex.h:
 
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/include/SDL3/SDL_keyboard.h:
-
-/usr/include/xcb/xcb.h:
-
-/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
-
-/home/decaianinfinity/_programming_/ember_engine/external/sdl/src/joystick/hidapi/SDL_hidapi_ps4.c:
 
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/video/offscreen/SDL_offscreenframebuffer.c:
 
@@ -7922,6 +7932,8 @@ external/sdl/include-config-/build_config/SDL_build_config.h:
 
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/audio/SDL_audio_channel_converters.h:
 
+/usr/include/X11/X.h:
+
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/video/x11/SDL_x11touch.h:
 
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/audio/SDL_audiodev.c:
@@ -7953,6 +7965,10 @@ external/sdl/include-config-/build_config/SDL_build_config.h:
 /usr/include/x86_64-linux-gnu/bits/local_lim.h:
 
 /usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
+
+/home/decaianinfinity/_programming_/ember_engine/external/sdl/src/render/direct3d/SDL_shaders_d3d.c:
+
+/usr/include/X11/Xlib.h:
 
 /usr/include/x86_64-linux-gnu/bits/uio_lim.h:
 
@@ -8192,12 +8208,6 @@ external/sdl/include-config-/build_config/SDL_build_config.h:
 
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/events/SDL_mouse.c:
 
-/home/decaianinfinity/_programming_/ember_engine/external/sdl/src/render/direct3d12/SDL_render_d3d12.c:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/vaesintrin.h:
-
-/home/decaianinfinity/_programming_/ember_engine/external/sdl/src/joystick/hidapi/SDL_hidapi_ps5.c:
-
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/render/opengles2/SDL_shaders_gles2.h:
 
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/dialog/unix/SDL_zenitydialog.h:
@@ -8223,6 +8233,12 @@ external/sdl/include-config-/build_config/SDL_build_config.h:
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/events/SDL_clipboardevents.c:
 
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/events/SDL_displayevents.c:
+
+/home/decaianinfinity/_programming_/ember_engine/external/sdl/src/render/SDL_yuv_sw_c.h:
+
+/usr/include/X11/Xfuncproto.h:
+
+/usr/include/X11/Xosdefs.h:
 
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/events/SDL_keysym_to_keycode.c:
 
@@ -8349,13 +8365,3 @@ external/sdl/include-config-/build_config/SDL_build_config.h:
 /usr/include/GL/glx.h:
 
 /home/decaianinfinity/_programming_/ember_engine/external/sdl/src/joystick/hidapi/SDL_hidapi_rumble.h:
-
-/home/decaianinfinity/_programming_/ember_engine/external/sdl/src/video/SDL_blit_auto.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/dirent_ext.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/cetintrin.h:
-
-/home/decaianinfinity/_programming_/ember_engine/external/sdl/src/joystick/hidapi/SDL_hidapi_rumble.c:

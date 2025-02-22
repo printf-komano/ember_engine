@@ -94,7 +94,7 @@ file(REMOVE_RECURSE
   "libcglm.pdb"
   "libcglm.so"
   "libcglm.so.0"
-  "libcglm.so.0.9.5"
+  "libcglm.so.0.9.6"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/home/decaianinfinity/_programming_/ember_engine/external/sdl/include -I/home/decaianinfinity/_programming_/ember_engine/external/cglm/include -I/home/decaianinfinity/_programming_/ember_engine/build/external/sdl/include-revision
+C_INCLUDES = -I/home/decaianinfinity/_programming_/ember_engine/external/sdl/include -I/home/decaianinfinity/_programming_/ember_engine/external/cglm/include -I/home/decaianinfinity/_programming_/ember_engine/build/external/sdl/include-revision -I/home/decaianinfinity/_programming_/ember_engine/external/glad/include
 
 C_FLAGS = -std=gnu11
 
