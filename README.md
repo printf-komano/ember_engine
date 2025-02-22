@@ -2,6 +2,8 @@
 
 3d Engine written on C + OpenGL.
 
+![cubes](cubes.png "Cubes rendered using ember engine")
+
 This engine adds some tools to work comfortably with buffers, adding and deleting the models in real time.
 The goal is to create a simple and optimised engine on C.
 

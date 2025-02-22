@@ -10,10 +10,10 @@ void get_keyboard_movement (vec3 dir){
 
     //Z
     if(keyboard_state[SDL_SCANCODE_UP]){
-        dir[2]+=1.0f;
+        dir[2]-=1.0f;
     }
     if(keyboard_state[SDL_SCANCODE_DOWN]){
-        dir[2]-=1.0f;
+        dir[2]+=1.0f;
     }
 
     //X
