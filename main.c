@@ -14,7 +14,7 @@
 
 
 #define WIDTH 1024
-#define HEIGHT 800
+#define HEIGHT 1024
 
 int main() {
     SDL_Init(SDL_INIT_VIDEO);
@@ -48,7 +48,7 @@ int main() {
     vmodel color_rect = vmodel_test_rectangle();
     bhandler_vmodel_instance(&batch,&color_rect);
     bhandler_vmodel_instance(&batch,&color_rect);
-    bhandler_vmodel_instance(&batch,&color_rect);
+    //bhandler_vmodel_instance(&batch,&color_rect);
 
     vmodel_inst* vmi0 = VEC_GETPTR(&batch.models,vmodel_inst,0);
     vmi0->scale[0]=0.25f;
@@ -99,15 +99,21 @@ int main() {
     //__________________________________________________
     camera cam = {{0.0f,0.0f,-1.0f},{0.0f,0.0f,0.0f},glm_rad(90.0f)};
     vec3 movement_dir;
+    vec2 mouse_motion; vec2 mouse_dxy;
 
     //__________________________________________________
     // main loop
     //__________________________________________________
     uint64_t prev_tick = SDL_GetTicks();
     
-    glEnable(GL_CULL_FACE);
+    glEnable(GL_CULL_FACE); glCullFace(GL_BACK);
+    glEnable(GL_DEPTH_TEST); 
+
+    //SDL_SetWindowRelativeMouseMode(window,true);
 
     while(true){
+        mouse_dxy[0] = 0.0f; mouse_dxy[1] = 0.0f;
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         //__________________________________________________
         // delta time
         //__________________________________________________
@@ -119,16 +125,24 @@ int main() {
         while (SDL_PollEvent(&event))
         {
             if(event.type == SDL_EVENT_QUIT) goto break_main_loop;
+            if(event.type == SDL_EVENT_MOUSE_MOTION){
+                mouse_dxy[0] = (event.motion.x-mouse_motion[0])*delta_time; mouse_dxy[1] = (event.motion.y-mouse_motion[1])*delta_time;//calculate mouse motion changes
+                mouse_motion[0] = event.motion.x; mouse_motion[1] = event.motion.y;   
+                printf("mdx:%f, mdy:%f\n",mouse_dxy[0],mouse_dxy[1]);
+
+            }
 
         }
+        cam.rot[0] = glm_clamp(cam.rot[0]+mouse_dxy[1],-1.4f,1.4f);
+        cam.rot[1] += mouse_dxy[0];
 
-        glm_perspective(cam.fov,(float)WIDTH/(float)HEIGHT,100.0f,0.1f,proj);
+        glm_perspective(cam.fov,(float)WIDTH/(float)HEIGHT,0.1f,100.0f,proj);
 
         get_keyboard_movement(movement_dir);
         glm_vec3_scale(movement_dir,delta_time,movement_dir);
         glm_vec3_add(cam.pos,movement_dir,cam.pos);
 
-        glClearColor(0.1f,0.1f,0.1f,0.0f);
+        glClearColor(0.0f,0.0f,0.0f,0.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         //__________________________________________________

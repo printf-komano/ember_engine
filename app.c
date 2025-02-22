@@ -1,11 +1,29 @@
 #pragma once
 
 #include <SDL3/SDL.h>
+#include <SDL3/SDL_time.h>
 #include <glad/gl.h>
 #include <cglm/cglm.h>
+
 #include <stdio.h>
-#include "bhandler.h"
+
+#include "utils/vector.h"
 #include "utils/shader_reader.h"
+#include "bhandler.h"
+#include "model/camera.h"
+#include "input.c"
+
+
+
+typedef struct{
+    uint16_t window_width;
+    uint16_t window_height;
+    
+    GLuint vbo, ebo, vao; //buffers for opengl
+
+    bhandler* batches; //main batch is 0
+}app;
+
 
 
 
@@ -37,3 +55,6 @@ void app_setup_buffers(GLuint * vao, GLuint vao_binding_point, GLuint vbo, GLuin
     glVertexArrayAttribFormat(*vao, VB_ATTRIB_UV_OFFSET, VB_ATTRIB_UV_SIZE, GL_FLOAT, GL_FALSE, 3 * sizeof(float));
     glVertexArrayAttribBinding(*vao, VB_ATTRIB_UV_OFFSET, vao_binding_point);
 }
+
+
+
