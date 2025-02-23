@@ -8,7 +8,10 @@
 #include "utils/vector.h"
 #include "utils/shader_reader.h"
 #include "bhandler.h"
+
 #include "model/camera.h"
+#include "model/node.h"
+
 #include "input.c"
 #include "app.c"
 
@@ -43,11 +46,17 @@ int main() {
     glCreateBuffers(1,&ebo);
 
     //__________________________________________________
-    // add the debug rectangle
+    // add the debug figures
     //__________________________________________________
+
     vmodel color_rect = vmodel_test_rectangle();
     bhandler_vmodel_instance(&batch,&color_rect);
     bhandler_vmodel_instance(&batch,&color_rect);
+    node n; node_init(&n);
+    n.pos[2] = -2.5f;
+    n.scale[0] = 0.75f;
+    n.scale[1] = 0.75f;
+    n.scale[2] = 0.75f;
     //bhandler_vmodel_instance(&batch,&color_rect);
 
     vmodel_inst* vmi0 = VEC_GETPTR(&batch.models,vmodel_inst,0);
@@ -56,9 +65,12 @@ int main() {
     vmi0->scale[2]=0.25f;
     vmi0->rot[0]=0.25f;
     vmi0->pos[0]=1.75f;
+    vmi0->parent = &n;
     
-    vmodel_inst* vmi1 = VEC_GETPTR(&batch.models,vmodel_inst,0);
+    vmodel_inst* vmi1 = VEC_GETPTR(&batch.models,vmodel_inst,1);
     vmi1->rot[1]=-0.25f;
+    //vmi1->pos[1]=1.25f;
+    vmi1->parent = &n;
 
     glNamedBufferStorage(vbo,batch.vb_capacity,batch.vb_data,GL_DYNAMIC_STORAGE_BIT);
     glNamedBufferStorage(ebo,batch.eb_capacity,batch.eb_data,GL_DYNAMIC_STORAGE_BIT);
@@ -143,7 +155,6 @@ int main() {
         get_keyboard_movement(movement_dir);
         glm_vec3_rotate(movement_dir,cam.rot[1],(vec3){0,1,0});
         glm_vec3_scale(movement_dir,delta_time,movement_dir);
-        printf("movementz:%f\n",movement_dir[2]);
 
         glm_vec3_add(cam.pos,movement_dir,cam.pos);
 

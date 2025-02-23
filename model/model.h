@@ -4,7 +4,7 @@
 #include <glad/gl.h>
 #include <cglm/cglm.h>
 #include <stdio.h>
-
+#include "node.h"
 
 //__________________________________________________
 // vmodel - unique sample of the model
@@ -90,6 +90,9 @@ typedef struct //vertex model (instance)
     vec3 pos;
     vec3 scale;
     vec3 rot;
+
+    node * parent;
+
 } vmodel_inst; 
 
 
@@ -98,6 +101,12 @@ void vmodel_inst_get_transform(vmodel_inst * vmi, mat4 m){
     glm_euler_xyz(vmi->rot,m);
     glm_scale(m,vmi->scale); //not affected by rotation
     glm_translated(m,vmi->pos); //not affected by scale rotation
+
+    if(vmi->parent != NULL){
+        mat4 parent_tr;
+        node_get_transform(vmi->parent,parent_tr);
+        glm_mat4_mul(parent_tr,m,m);
+    }
 };
 
 void vmodel_inst_def_trtansform(vmodel_inst * vmi){
