@@ -51,7 +51,7 @@ int main() {
 
     vmodel color_rect = vmodel_test_rectangle();
     bhandler_vmodel_instance(&batch,&color_rect);
-    bhandler_vmodel_instance(&batch,&color_rect);
+    vmodel_inst* vmi1 = bhandler_vmodel_instance(&batch,&color_rect);
     node n; node_init(&n);
     n.pos[2] = -2.5f;
     n.scale[0] = 0.75f;
@@ -67,9 +67,9 @@ int main() {
     vmi0->pos[0]=1.75f;
     vmi0->parent = &n;
     
-    vmodel_inst* vmi1 = VEC_GETPTR(&batch.models,vmodel_inst,1);
+    // = VEC_GETPTR(&batch.models,vmodel_inst,1);
     vmi1->rot[1]=-0.25f;
-    //vmi1->pos[1]=1.25f;
+    vmi1->scale[1]=0.1f;
     vmi1->parent = &n;
 
     glNamedBufferStorage(vbo,batch.vb_capacity,batch.vb_data,GL_DYNAMIC_STORAGE_BIT);

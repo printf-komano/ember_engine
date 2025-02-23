@@ -12,11 +12,12 @@
 #define VB_ATTRIB_UV_OFFSET 2
 #define VB_ATTRIB_NORMAL_OFFSET 3
 
+
 #define VB_ATTRIB_POS_SIZE 3
 #define VB_ATTRIB_CLR_SIZE 3
 #define VB_ATTRIB_UV_SIZE 2
 #define VB_ATTRIB_NORMAL_SIZE 3
-
+#define VB_ATTRIB_FULL_SIZE 11
 
 //__________________________________________________
 // vmodel - unique sample of the model

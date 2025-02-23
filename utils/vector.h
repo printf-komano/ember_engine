@@ -31,9 +31,9 @@ void* vec_push(vec *v, void *value){
         v->capacity *= 2;
         v->data = realloc(v->data,v->capacity*v->elem_size);
     }
-    memcpy((char*)v->data + v->len*v->elem_size,value,v->elem_size);
+    void * ptr = memcpy((char*)v->data + v->len*v->elem_size,value,v->elem_size);
     ++v->len;
-    return (char*)v->data + v->len*v->elem_size;
+    return ptr;
 }
 
 void vec_pop(vec * v){ v->len -= v->len>0; }
