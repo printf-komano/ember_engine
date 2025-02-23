@@ -24,7 +24,6 @@ void get_keyboard_movement (vec3 dir){
         dir[0]-=1.0f;
     }
 
-
     //Y
     if(keyboard_state[SDL_SCANCODE_SPACE]){
         dir[1]+=1.0f;

@@ -132,23 +132,25 @@ int main() {
         float delta_time = ((float)current_tick-(float)prev_tick)*0.001f;
         prev_tick = current_tick;
 
+        //__________________________________________________
+        // mouse control
+        //__________________________________________________
+        float _mousex, _mousey; //new mouse coordinates
+        /*used for debugging*/
+        if(SDL_GetMouseState(&_mousex,&_mousey) & SDL_BUTTON_LMASK){
+            cam.rot[0] = glm_clamp(cam.rot[0]+mousedy*0.5f,-1.4f,1.4f);
+            cam.rot[1] += mousedx*0.5f;
+        }
+        mousedx = (_mousex-mousex) * delta_time; mousedy = (_mousey-mousey) * delta_time; //defference in coordinates
+        mousex=_mousex; mousey=_mousey;
+
         SDL_Event event;
         while (SDL_PollEvent(&event))
         {
             if(event.type == SDL_EVENT_QUIT) goto break_main_loop;
         }
-
-
-        //__________________________________________________
-        // mouse control
-        //__________________________________________________
-        float _mousex, _mousey; SDL_GetMouseState(&_mousex,&_mousey); //new mouse coordinates
-        mousedx = (_mousex-mousex) * delta_time; mousedy = (_mousey-mousey) * delta_time; //defference in coordinates
-        mousex=_mousex; mousey=_mousey;
-        //printf("mdx:%f, mdy:%f\n",mousedx,mousedy);
-
-        cam.rot[0] = glm_clamp(cam.rot[0]+mousedy*0.5f,-1.4f,1.4f);
-        cam.rot[1] += mousedx*0.5f;
+        
+       
 
         glm_perspective(cam.fov,(float)WIDTH/(float)HEIGHT,0.1f,100.0f,proj);
 
@@ -175,7 +177,7 @@ int main() {
             glUniformMatrix4fv(proj_uniform_loc,1,GL_FALSE,(float*)proj);
             glUniformMatrix4fv(model_uniform_loc,1,GL_FALSE,(float*)model);
             glUniformMatrix4fv(view_uniform_loc,1,GL_FALSE,(float*)view);
-            void * eoffset = (void*)( (inst->eb_start - batch.eb_data)/**sizeof(uint32_t)*/ );
+            void * eoffset = (void*)( (inst->eb_start - batch.eb_data));
             
 
             glDrawElements(GL_TRIANGLES,inst->eb_len/sizeof(uint32_t),GL_UNSIGNED_INT,eoffset);

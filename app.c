@@ -11,6 +11,7 @@
 #include "utils/shader_reader.h"
 #include "bhandler.h"
 #include "model/camera.h"
+#include "model/model.h"
 #include "input.c"
 
 
@@ -36,7 +37,7 @@ void app_setup_buffers(GLuint * vao, GLuint vao_binding_point, GLuint vbo, GLuin
         vao_binding_point,
         vbo,
         0, //offset is 0
-        (VB_ATTRIB_POS_SIZE+VB_ATTRIB_CLR_SIZE+VB_ATTRIB_UV_SIZE)*sizeof(float) //3 for pos and 3 for color
+        (VB_ATTRIB_POS_SIZE+VB_ATTRIB_CLR_SIZE+VB_ATTRIB_UV_SIZE+VB_ATTRIB_NORMAL_SIZE)*sizeof(float) //3 for pos and 3 for color
     );
     glVertexArrayElementBuffer(*vao,ebo);
 
@@ -52,8 +53,14 @@ void app_setup_buffers(GLuint * vao, GLuint vao_binding_point, GLuint vbo, GLuin
 
     //uvs
     glEnableVertexArrayAttrib(*vao, VB_ATTRIB_UV_OFFSET);
-    glVertexArrayAttribFormat(*vao, VB_ATTRIB_UV_OFFSET, VB_ATTRIB_UV_SIZE, GL_FLOAT, GL_FALSE, 3 * sizeof(float));
+    glVertexArrayAttribFormat(*vao, VB_ATTRIB_UV_OFFSET, VB_ATTRIB_UV_SIZE, GL_FLOAT, GL_FALSE, 6 * sizeof(float));
     glVertexArrayAttribBinding(*vao, VB_ATTRIB_UV_OFFSET, vao_binding_point);
+
+    //vertex normals
+    glEnableVertexArrayAttrib(*vao, VB_ATTRIB_NORMAL_OFFSET);
+    glVertexArrayAttribFormat(*vao, VB_ATTRIB_NORMAL_OFFSET, VB_ATTRIB_NORMAL_SIZE, GL_FLOAT, GL_FALSE, 8 * sizeof(float));
+    glVertexArrayAttribBinding(*vao, VB_ATTRIB_NORMAL_OFFSET, vao_binding_point);
+
 }
 
 

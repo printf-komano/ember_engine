@@ -6,6 +6,18 @@
 #include <stdio.h>
 #include "node.h"
 
+
+#define VB_ATTRIB_POS_OFFSET 0
+#define VB_ATTRIB_CLR_OFFSET 1
+#define VB_ATTRIB_UV_OFFSET 2
+#define VB_ATTRIB_NORMAL_OFFSET 3
+
+#define VB_ATTRIB_POS_SIZE 3
+#define VB_ATTRIB_CLR_SIZE 3
+#define VB_ATTRIB_UV_SIZE 2
+#define VB_ATTRIB_NORMAL_SIZE 3
+
+
 //__________________________________________________
 // vmodel - unique sample of the model
 //__________________________________________________
@@ -23,16 +35,17 @@ typedef struct //model template
 
 //model used for debugging (vertices)
 float _vmodel_test_rectangle_vertices[] = {
-        -0.5f, -0.5f, -0.5f, 1.2f, 0.2f, 0.2f, 0,0, //0
-        0.5f, -0.5f, -0.5f, 0.2f, 1.2f, 0.2f, 0,0, //1
-        -0.5f, 0.5f, -0.5f, 0.2f, 0.2f, 1.2f, 0,0, //2
-        0.5f, 0.5f, -0.5f, 1.2f, 0.2f, 0.2f, 0,0, //3
+        /*pos                       colors          uv      normals */
+        -0.5f, -0.5f, -0.5f,    1.2f, 0.2f, 0.2f,   0,0,    0,0,0, //0
+        0.5f, -0.5f, -0.5f, 0.2f, 1.2f, 0.2f, 0,0, 0,0,0, //1
+        -0.5f, 0.5f, -0.5f, 0.2f, 0.2f, 1.2f, 0,0, 0,0,0, //2
+        0.5f, 0.5f, -0.5f, 1.2f, 0.2f, 0.2f, 0,0, 0,0,0, //3
 
 
-        -0.5f, -0.5f, 0.5f, 0.2f, 0.2f, 0.2f, 0,0, //4
-        0.5f, -0.5f, 0.5f, 0.2f, 0.2f, 0.2f, 0,0, //5
-        -0.5f, 0.5f, 0.5f, 0.2f, 0.2f, 0.2f, 0,0, //6
-        0.5f, 0.5f, 0.5f, 0.2f, 0.2f, 0.2f, 0,0, //7
+        -0.5f, -0.5f, 0.5f, 0.2f, 0.2f, 0.2f, 0,0, 0,0,0, //4
+        0.5f, -0.5f, 0.5f, 0.2f, 0.2f, 0.2f, 0,0, 0,0,0, //5
+        -0.5f, 0.5f, 0.5f, 0.2f, 0.2f, 0.2f, 0,0, 0,0,0, //6
+        0.5f, 0.5f, 0.5f, 0.2f, 0.2f, 0.2f, 0,0, 0,0,0, //7
 };
 __uint32_t _vmodel_test_rectangle_elements[] = {
     1,0,2,
