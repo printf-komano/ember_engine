@@ -70,6 +70,7 @@ typedef struct
 
 void node_pool_init(node_pool * np, size_t capacity){
     np->nodes = malloc(capacity*sizeof(node));
+    for(uint32_t i=0; i<capacity; ++i) np->nodes[i].node_state = NODE_STATE_NONE;
     np->capacity = capacity;
     np->last_index = 0;
 }
@@ -105,4 +106,9 @@ node * node_pool_add_node(node_pool * np){
 node * node_pool_get(node_pool * np, int32_t index){
     if(index<0 || index>=np->capacity || np->nodes[index].node_state==NODE_STATE_NONE) return NULL;
     return &np->nodes[index];
+}
+
+
+void node_pool_free(node_pool * np){
+    free(np->nodes);
 }

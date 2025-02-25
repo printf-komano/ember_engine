@@ -60,6 +60,8 @@ int main() {
     n->scale[0] = 0.75f;
     n->scale[1] = 0.75f;
     n->scale[2] = 0.75f;
+    //node_pool_remove_node(&nodepool,0);
+    printf("NODE0 STATE %i\n",nodepool.nodes[0].node_state);
     //bhandler_vmodel_instance(&batch,&color_rect);
 
     vmodel_inst* vmi0 = VEC_GETPTR(&batch.models,vmodel_inst,0);
@@ -200,6 +202,7 @@ int main() {
     SDL_Quit();
 
     bhandler_free(&batch);
+    node_pool_free(&nodepool);
 
     return EXIT_SUCCESS;
 }
