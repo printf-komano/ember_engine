@@ -111,7 +111,7 @@ void vmodel_inst_get_transform(vmodel_inst * vmi, mat4 m){
     glm_scale(m,vmi->scale); //not affected by rotation
     glm_translated(m,vmi->pos); //not affected by scale rotation
 
-    if(vmi->parent != NULL){
+    if(vmi->parent != NULL && vmi->parent->node_state!=NODE_STATE_NONE){
         mat4 parent_tr;
         node_get_transform(vmi->parent,parent_tr);
         glm_mat4_mul(parent_tr,m,m);

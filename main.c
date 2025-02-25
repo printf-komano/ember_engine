@@ -37,7 +37,6 @@ int main() {
 
     printf("opengl version: %s\n",glGetString(GL_VERSION));
 
-
     //__________________________________________________
     // vertex buffer and element buffer
     //__________________________________________________
@@ -53,11 +52,14 @@ int main() {
     vmodel color_rect = vmodel_test_rectangle();
     bhandler_vmodel_instance(&batch,&color_rect);
     vmodel_inst* vmi1 = bhandler_vmodel_instance(&batch,&color_rect);
-    node n; node_init(&n);
-    n.pos[2] = -2.5f;
-    n.scale[0] = 0.75f;
-    n.scale[1] = 0.75f;
-    n.scale[2] = 0.75f;
+
+    node_pool nodepool;
+    node_pool_init(&nodepool,8);
+    node* n = node_pool_add_node(&nodepool);
+    n->pos[2] = -2.5f;
+    n->scale[0] = 0.75f;
+    n->scale[1] = 0.75f;
+    n->scale[2] = 0.75f;
     //bhandler_vmodel_instance(&batch,&color_rect);
 
     vmodel_inst* vmi0 = VEC_GETPTR(&batch.models,vmodel_inst,0);
@@ -66,12 +68,12 @@ int main() {
     vmi0->scale[2]=0.25f;
     vmi0->rot[0]=0.25f;
     vmi0->pos[0]=1.75f;
-    vmi0->parent = &n;
+    vmi0->parent = n;
     
     // = VEC_GETPTR(&batch.models,vmodel_inst,1);
     vmi1->rot[1]=-0.25f;
     vmi1->scale[1]=0.1f;
-    vmi1->parent = &n;
+    vmi1->parent = n;
 
     glNamedBufferStorage(vbo,batch.vb_capacity,batch.vb_data,GL_DYNAMIC_STORAGE_BIT);
     glNamedBufferStorage(ebo,batch.eb_capacity,batch.eb_data,GL_DYNAMIC_STORAGE_BIT);
@@ -139,8 +141,8 @@ int main() {
         float _mousex, _mousey; //new mouse coordinates
         /*used for debugging*/
         if(SDL_GetMouseState(&_mousex,&_mousey) & SDL_BUTTON_LMASK){
-            cam.rot[0] = glm_clamp(cam.rot[0]+mousedy*0.5f,-1.4f,1.4f);
-            cam.rot[1] += mousedx*0.5f;
+            cam.rot[0] = glm_clamp(cam.rot[0]+mousedy*0.4f,-1.4f,1.4f);
+            cam.rot[1] += mousedx*0.4f;
         }
         mousedx = (_mousex-mousex) * delta_time; mousedy = (_mousey-mousey) * delta_time; //defference in coordinates
         mousex=_mousex; mousey=_mousey;

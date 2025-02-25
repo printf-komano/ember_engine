@@ -38,6 +38,15 @@ void* vec_push(vec *v, void *value){
 
 void vec_pop(vec * v){ v->len -= v->len>0; }
 
+void vec_remove(vec * v, size_t index){ 
+    if(index >= v->len) return;
+    memmove(
+        (char*)v->data + index*v->elem_size, //element at index will be removed
+        (char*)v->data + (index+1)*v->elem_size, //next elementwill replace current
+        (v->len-index)*v->elem_size //shift all next elements to left
+    );
+    --v->len;
+}
 
 void vec_clear(vec * v){v->len=0;}
 
