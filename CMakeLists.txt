@@ -18,8 +18,14 @@ target_include_directories(glad PUBLIC external/glad/include)
 add_subdirectory(external/cglm)
 include_directories(external/cglm/include)
 
+
 # executable
 add_executable(ember main.c)
 
+# cgltf 
+target_include_directories(ember PUBLIC ${CMAKE_SOURCE_DIR}/external/cgltf)
+
+
 # libs
 target_link_libraries(ember SDL3-shared glad OpenGL::GL cglm m)
+
