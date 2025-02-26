@@ -6,6 +6,7 @@
 
 #define NODE_STATE_NONE 0
 #define NODE_STATE_ACTIVE 1
+#define NODE_STATE_IGNORE 2 
 
 typedef struct node node;
 

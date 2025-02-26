@@ -53,16 +53,16 @@ int main() {
     bhandler_vmodel_instance(&batch,&color_rect);
     vmodel_inst* vmi1 = bhandler_vmodel_instance(&batch,&color_rect);
 
+    /*create new node pool - can be 1 or more*/
     node_pool nodepool;
-    node_pool_init(&nodepool,8);
+    node_pool_init(&nodepool,1024);
     node* n = node_pool_add_node(&nodepool);
+
+    /*apply some transformations to the node*/
     n->pos[2] = -2.5f;
     n->scale[0] = 0.75f;
     n->scale[1] = 0.75f;
     n->scale[2] = 0.75f;
-    //node_pool_remove_node(&nodepool,0);
-    printf("NODE0 STATE %i\n",nodepool.nodes[0].node_state);
-    //bhandler_vmodel_instance(&batch,&color_rect);
 
     vmodel_inst* vmi0 = VEC_GETPTR(&batch.models,vmodel_inst,0);
     vmi0->scale[0]=0.25f;
@@ -72,7 +72,6 @@ int main() {
     vmi0->pos[0]=1.75f;
     vmi0->parent = n;
     
-    // = VEC_GETPTR(&batch.models,vmodel_inst,1);
     vmi1->rot[1]=-0.25f;
     vmi1->scale[1]=0.1f;
     vmi1->parent = n;
