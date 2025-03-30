@@ -113,3 +113,51 @@ node * node_pool_get(node_pool * np, int32_t index){
 void node_pool_free(node_pool * np){
     free(np->nodes);
 }
+
+
+
+
+
+
+
+
+
+/*
+
+
+//reading models from file
+cgltf_data * _vmodel_load_gltf(char * path){
+    cgltf_data * data = NULL; 
+    cgltf_options options = {0};
+    
+    cgltf_result res = cgltf_parse_file(&options,path,&data);
+    if(res != cgltf_result_success) return NULL;
+
+    res = cgltf_load_buffers(&options,data,path);
+    if(res != cgltf_result_success) return NULL;
+
+    res = cgltf_validate(data);
+    if(res != cgltf_result_success) return NULL;
+
+    return data;
+}
+
+
+void vmodel_init_gltf(vec * out, char * path){
+    cgltf_data * data = _vmodel_load_gltf(path);
+    if (!data) return;
+
+    //vec_alloc(sizeof(vmodel*),)
+    
+    for(cgltf_size i=0; i<data->meshes_count; ++i){
+        cgltf_mesh* mesh = &data->meshes[i];
+        for(cgltf_size j=0; j<mesh->primitives_count; ++j){
+            cgltf_primitive * pr = &mesh->primitives[j]; vmodel *vm;
+            vmodel_load_primitive_cgltf(vm,pr);
+            
+
+        }   
+    }
+    
+}
+*/

@@ -43,35 +43,77 @@ typedef struct //model template
 
 
 
-cgltf_data * _vmodel_load_gltf(char * path){
-    cgltf_data * data = NULL; 
-    cgltf_options options = {0};
+
+void vmodel_load_primitive_cgltf(vmodel *out, const cgltf_primitive *primitive) {
+    size_t num_vertices = 0;
+    size_t num_indices = 0;
+    size_t vertex_stride = VB_ATTRIB_SIZE_MAX;
+
+    //check possible errors 
+    if (primitive->attributes_count > 0) num_vertices = primitive->attributes[0].data->count;
+    if (primitive->indices) num_indices = primitive->indices->count;
+
     
-    cgltf_result res = cgltf_parse_file(&options,path,&data);
-    if(res != cgltf_result_success) return NULL;
+    out->vb_len = num_vertices * vertex_stride * sizeof(float);
+    out->vb = (float*)malloc(out->vb_len);
 
-    res = cgltf_load_buffers(&options,data,path);
-    if(res != cgltf_result_success) return NULL;
-
-    res = cgltf_validate(data);
-    if(res != cgltf_result_success) return NULL;
-
-    return data;
-}
+    out->eb_len = num_indices * sizeof(uint32_t);
+    out->eb = (uint32_t*)malloc(out->eb_len);
 
 
-void vmodel_init_gltf(vmodel * vm, char * path){
-    cgltf_data * data = _vmodel_load_gltf(path);
-    if (!data) return;
 
-    for(cgltf_size i=0; i<data->meshes_count; ++i){
-        cgltf_mesh* mesh = &data->meshes[i];
-        for(cgltf_size j=0; j<mesh->primitives_count; ++j){
-            cgltf_primitive * pr = &mesh->primitives[j];
-            
-        }   
+    //fill vbo with zeros
+    memset(out->vb, 0, out->vb_len);
+
+    // fill vbo with values from cgltf primitive
+    for (size_t i = 0; i < num_vertices; i++) {
+        float *vbo_ver = &out->vb[i * vertex_stride];
+
+        //for each attribute in current vertex
+        for (size_t j = 0; j < primitive->attributes_count; j++) {
+            cgltf_attribute *attr = &primitive->attributes[j];
+            cgltf_accessor *accessor = attr->data;
+
+            int num_components = 1;
+            if (accessor->type == cgltf_type_vec2) num_components = 2;
+            if (accessor->type == cgltf_type_vec3) num_components = 3;
+            if (accessor->type == cgltf_type_vec4) num_components = 4;
+
+            float temp[4] = {0}; //max 4 values for attrib
+            cgltf_accessor_read_float(accessor, i, temp, num_components);
+
+            switch (attr->type) {
+                case cgltf_attribute_type_position:
+                    vbo_ver[0] = temp[0];
+                    vbo_ver[1] = temp[1];
+                    vbo_ver[2] = temp[2];
+                    break;
+                case cgltf_attribute_type_color:
+                    vbo_ver[3] = temp[0];
+                    vbo_ver[4] = temp[1];
+                    vbo_ver[5] = temp[2];
+                    break;
+                case cgltf_attribute_type_texcoord:
+                    vbo_ver[6] = temp[0];
+                    vbo_ver[7] = temp[1];
+                    break;
+                case cgltf_attribute_type_normal:
+                    vbo_ver[8] = temp[0];
+                    vbo_ver[9] = temp[1];
+                    vbo_ver[10] = temp[2];
+                    break;
+                default:
+                    break;
+            }
+        }
     }
-    
+
+    // fill ebo
+    if (primitive->indices) {
+        for (size_t i = 0; i < num_indices; i++) {
+            out->eb[i] = (uint32_t)cgltf_accessor_read_index(primitive->indices, i);
+        }
+    }
 }
 
 

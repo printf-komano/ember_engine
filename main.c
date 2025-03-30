@@ -41,7 +41,7 @@ int main() {
     // vertex buffer and element buffer
     //__________________________________________________
     GLuint vbo, ebo, vao;
-    bhandler batch = bhandler_init(1024, &vbo, 1024, &ebo);
+    bhandler batch = bhandler_init(2000024*1024, &vbo, 2000024*1024, &ebo);
     glCreateBuffers(1,&vbo);
     glCreateBuffers(1,&ebo);
 
@@ -50,21 +50,22 @@ int main() {
     //__________________________________________________
 
     vmodel color_rect = vmodel_test_rectangle();
-    bhandler_vmodel_instance(&batch,&color_rect);
+    vmodel_inst* vmi0 = bhandler_vmodel_instance(&batch,&color_rect);
     vmodel_inst* vmi1 = bhandler_vmodel_instance(&batch,&color_rect);
 
+    
     /*create new node pool - can be 1 or more*/
     node_pool nodepool;
     node_pool_init(&nodepool,1024);
     node* n = node_pool_add_node(&nodepool);
 
     /*apply some transformations to the node*/
-    n->pos[2] = -2.5f;
+    n->pos[2] = -0.5f;
     n->scale[0] = 0.75f;
     n->scale[1] = 0.75f;
     n->scale[2] = 0.75f;
 
-    vmodel_inst* vmi0 = VEC_GETPTR(&batch.models,vmodel_inst,0);
+    //vmodel_inst* vmi0 = VEC_GETPTR(&batch.models,vmodel_inst,0);
     vmi0->scale[0]=0.25f;
     vmi0->scale[1]=0.25f;
     vmi0->scale[2]=0.25f;
@@ -75,6 +76,21 @@ int main() {
     vmi1->rot[1]=-0.25f;
     vmi1->scale[1]=0.1f;
     vmi1->parent = n;
+
+
+    node* multinode = node_pool_add_node(&nodepool);
+    multinode->pos[0] = 56;
+    multinode->pos[1] = 56;
+    multinode->pos[2] = 56;
+    for(uint16_t i = 0; i < 1000; ++i){
+        vmodel_inst* vmii = bhandler_vmodel_instance(&batch,&color_rect);
+        vmii->pos[0] = rand()%256;
+        vmii->pos[1] = rand()%256;
+        vmii->pos[2] = rand()%256;
+        vmii->parent=multinode;
+    }
+
+
 
     glNamedBufferStorage(vbo,batch.vb_capacity,batch.vb_data,GL_DYNAMIC_STORAGE_BIT);
     glNamedBufferStorage(ebo,batch.eb_capacity,batch.eb_data,GL_DYNAMIC_STORAGE_BIT);
@@ -135,6 +151,7 @@ int main() {
         uint64_t current_tick = SDL_GetTicks();
         float delta_time = ((float)current_tick-(float)prev_tick)*0.001f;
         prev_tick = current_tick;
+        printf("fps: %f\n",1.0f/delta_time);
 
         //__________________________________________________
         // mouse control
@@ -156,9 +173,14 @@ int main() {
         
        
 
-        glm_perspective(cam.fov,(float)WIDTH/(float)HEIGHT,0.1f,100.0f,proj);
+        glm_perspective(cam.fov,(float)WIDTH/(float)HEIGHT,0.1f,10000.0f,proj);
 
         get_keyboard_movement(movement_dir);
+
+        movement_dir[0]*=10.0f;
+        movement_dir[1]*=10.0f;
+        movement_dir[2]*=10.0f;
+
         glm_vec3_rotate(movement_dir,cam.rot[1],(vec3){0,1,0});
         glm_vec3_scale(movement_dir,delta_time,movement_dir);
 
@@ -166,13 +188,13 @@ int main() {
 
         glClearColor(0.0f,0.0f,0.0f,0.0f);
         glClear(GL_COLOR_BUFFER_BIT);
-
+        multinode->rot[1]+=delta_time*0.1f;
         //__________________________________________________
         // rendering each vmodel_inst
         //__________________________________________________
         for(uint32_t i = 0; i<batch.models.len; ++i){
             vmodel_inst * inst = VEC_GETPTR(&batch.models,vmodel_inst,i);
-            if(i==1){inst->rot[0]+=delta_time*0.5f; inst->rot[2]+=delta_time;} //debug moving the model
+            {inst->rot[0]+=delta_time*0.5f; inst->rot[2]+=delta_time;} //debug moving the model
             //if(i==0){inst->rot[1]+=delta_time*0.2f;} //debug moving the model
             //printf("i:%i, x:%f, y:%f, z:%f\n",i,inst->scale[0],inst->scale[1],inst->scale[2]);
 
