@@ -11,7 +11,6 @@
 #include "utils/shader_reader.h"
 #include "bhandler.h"
 #include "model/camera.h"
-#include "model/model.h"
 #include "input.c"
 
 

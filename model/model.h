@@ -22,15 +22,15 @@
 #define VB_ATTRIB_SIZE_MAX 11
 
 //__________________________________________________
-// vmodel - unique sample of the model
+// prim - unique sample of the primitive
 //__________________________________________________
 
 /*
 The simplest primitive consisting of triangles. 
 Can contain only one material (shader). 
-To assemble a full model from several primitives, you will need to use nodes.
+To assemble a full primitive from several primitives, you will need to use nodes.
 */
-typedef struct //model template
+typedef struct //primitive template
 {
     bool use_vertex_colors; //takes 3 elements in buffer
     bool use_uv; //2 additional elements in the buffer
@@ -39,12 +39,12 @@ typedef struct //model template
 
     uint32_t * eb; //local triangles buffer 
     uint32_t eb_len; //length of the original triangles buffer (in bytes)
-} vmodel; 
+} prim; 
 
 
 
 
-void vmodel_load_primitive_cgltf(vmodel *out, const cgltf_primitive *primitive) {
+void prim_load_primitive_cgltf(prim *out, const cgltf_primitive *primitive) {
     size_t num_vertices = 0;
     size_t num_indices = 0;
     size_t vertex_stride = VB_ATTRIB_SIZE_MAX;
@@ -118,15 +118,15 @@ void vmodel_load_primitive_cgltf(vmodel *out, const cgltf_primitive *primitive) 
 
 
 //__________________________________________________
-// vmodel_inst - instance of the model
+// prim_inst - instance of the primitive
 //__________________________________________________
-typedef struct //vertex model (instance)
+typedef struct //vertex primitive (instance)
 {    
-    vmodel * model; //reference to the origianl model
+    prim * primitive; //reference to the original primitive
 
     /*
-    If the model is created successfully, 
-    it gets its own vertex buffer, independent of the unique model. 
+    If the primitive is created successfully, 
+    it gets its own vertex buffer, independent of the unique primitive. 
     Several instances can share one place in buffer (same vb_start), for optimisation.
     */
 
@@ -136,7 +136,7 @@ typedef struct //vertex model (instance)
     uint32_t * eb_start; //reference to the element buffer
     uint32_t eb_len; //length in the element buffer (in bytes)
 
-    // mat4 transform; //model matrix
+    // mat4 transform; //primitive matrix
     vec3 pos;
     vec3 scale;
     vec3 rot;
@@ -144,26 +144,26 @@ typedef struct //vertex model (instance)
     // reference to the parent node. child node will inherit all the transformations.
     node * parent; 
 
-} vmodel_inst; 
+} prim_inst; 
 
 
-void vmodel_inst_get_transform(vmodel_inst * vmi, mat4 m){
+void prim_inst_get_transform(prim_inst * pr, mat4 m){
     glm_mat4_identity(m);
-    glm_euler_xyz(vmi->rot,m);
-    glm_scale(m,vmi->scale); //not affected by rotation
-    glm_translated(m,vmi->pos); //not affected by scale rotation
+    glm_euler_xyz(pr->rot,m);
+    glm_scale(m,pr->scale); //not affected by rotation
+    glm_translated(m,pr->pos); //not affected by scale rotation
 
-    if(vmi->parent != NULL && vmi->parent->node_state!=NODE_STATE_NONE){
+    if(pr->parent != NULL && pr->parent->node_state!=NODE_STATE_NONE){
         mat4 parent_tr;
-        node_get_transform(vmi->parent,parent_tr);
+        node_get_transform(pr->parent,parent_tr);
         glm_mat4_mul(parent_tr,m,m);
     }
 };
 
-void vmodel_inst_def_trtansform(vmodel_inst * vmi){
-    vmi->pos[0] = 0.0f; vmi->pos[1] = 0.0f; vmi->pos[2] = 0.0f;
-    vmi->rot[0] = 0.0f; vmi->rot[1] = 0.0f; vmi->rot[2] = 0.0f;
-    vmi->scale[0] = 1.0f; vmi->scale[1] = 1.0f; vmi->scale[2] = 1.0f;
+void prim_inst_def_trtansform(prim_inst * pr){
+    pr->pos[0] = 0.0f; pr->pos[1] = 0.0f; pr->pos[2] = 0.0f;
+    pr->rot[0] = 0.0f; pr->rot[1] = 0.0f; pr->rot[2] = 0.0f;
+    pr->scale[0] = 1.0f; pr->scale[1] = 1.0f; pr->scale[2] = 1.0f;
 }
 
 
@@ -180,8 +180,8 @@ void vmodel_inst_def_trtansform(vmodel_inst * vmi){
 
 
 
-//model used for debugging (vertices)
-float _vmodel_test_rectangle_vertices[] = {
+//primitive used for debugging (vertices)
+float _prim_test_rectangle_vertices[] = {
         /*pos                       colors          uv      normals */
         -0.5f, -0.5f, -0.5f,    1.2f, 0.2f, 0.2f,   0,0,    0,0,0, //0
         0.5f, -0.5f, -0.5f, 0.2f, 1.2f, 0.2f, 0,0, 0,0,0, //1
@@ -194,7 +194,7 @@ float _vmodel_test_rectangle_vertices[] = {
         -0.5f, 0.5f, 0.5f, 0.2f, 0.2f, 0.2f, 0,0, 0,0,0, //6
         0.5f, 0.5f, 0.5f, 0.2f, 0.2f, 0.2f, 0,0, 0,0,0, //7
 };
-__uint32_t _vmodel_test_rectangle_elements[] = {
+__uint32_t _prim_test_rectangle_elements[] = {
     1,0,2,
     1,2,3, //fron
 
@@ -213,15 +213,15 @@ __uint32_t _vmodel_test_rectangle_elements[] = {
     4,5,6,
     6,5,7,
 };
-//model used for debugging
-vmodel vmodel_test_rectangle(){
-    vmodel m;
+//primitive used for debugging
+prim prim_test_rectangle(){
+    prim m;
     
-    m.vb = _vmodel_test_rectangle_vertices;
-    m.eb = _vmodel_test_rectangle_elements;
+    m.vb = _prim_test_rectangle_vertices;
+    m.eb = _prim_test_rectangle_elements;
     //m.transform   
     m.use_vertex_colors = true;
-    m.vb_len = sizeof(_vmodel_test_rectangle_vertices);
-    m.eb_len = sizeof(_vmodel_test_rectangle_elements);
+    m.vb_len = sizeof(_prim_test_rectangle_vertices);
+    m.eb_len = sizeof(_prim_test_rectangle_elements);
     return m;
 }

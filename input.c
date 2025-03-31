@@ -6,7 +6,7 @@
 
 
 void get_keyboard_movement (vec3 dir){
-    const uint8_t * keyboard_state = SDL_GetKeyboardState(NULL);
+    const bool * keyboard_state = SDL_GetKeyboardState(NULL);
 
     //Z
     if(keyboard_state[SDL_SCANCODE_UP]){

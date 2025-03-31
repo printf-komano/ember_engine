@@ -49,9 +49,9 @@ int main() {
     // add the debug figures
     //__________________________________________________
 
-    vmodel color_rect = vmodel_test_rectangle();
-    vmodel_inst* vmi0 = bhandler_vmodel_instance(&batch,&color_rect);
-    vmodel_inst* vmi1 = bhandler_vmodel_instance(&batch,&color_rect);
+    prim color_rect = prim_test_rectangle();
+    prim_inst* pr0 = bhandler_prim_instance(&batch,&color_rect);
+    prim_inst* pr1 = bhandler_prim_instance(&batch,&color_rect);
 
     
     /*create new node pool - can be 1 or more*/
@@ -64,30 +64,32 @@ int main() {
     n->scale[0] = 0.75f;
     n->scale[1] = 0.75f;
     n->scale[2] = 0.75f;
-
-    //vmodel_inst* vmi0 = VEC_GETPTR(&batch.models,vmodel_inst,0);
-    vmi0->scale[0]=0.25f;
-    vmi0->scale[1]=0.25f;
-    vmi0->scale[2]=0.25f;
-    vmi0->rot[0]=0.25f;
-    vmi0->pos[0]=1.75f;
-    vmi0->parent = n;
     
-    vmi1->rot[1]=-0.25f;
-    vmi1->scale[1]=0.1f;
-    vmi1->parent = n;
+   
+    pr0->scale[0]=0.25f;
+    pr0->scale[1]=0.25f;
+    pr0->scale[2]=0.25f;
+    pr0->rot[0]=0.25f;
+    pr0->pos[0]=1.75f;
+    pr0->parent = n;
+    
+    pr1->rot[1]=-0.25f;
+    pr1->scale[1]=0.1f;
+    pr1->parent = n;
 
 
     node* multinode = node_pool_add_node(&nodepool);
     multinode->pos[0] = 56;
     multinode->pos[1] = 56;
     multinode->pos[2] = 56;
-    for(uint16_t i = 0; i < 1000; ++i){
-        vmodel_inst* vmii = bhandler_vmodel_instance(&batch,&color_rect);
-        vmii->pos[0] = rand()%256;
-        vmii->pos[1] = rand()%256;
-        vmii->pos[2] = rand()%256;
-        vmii->parent=multinode;
+
+    //adding objects in a loop (testing)
+    for(uint16_t i = 0; i < 500; ++i){
+        prim_inst* pri = bhandler_prim_instance(&batch,&color_rect);
+        pri->pos[0] = rand()%256;
+        pri->pos[1] = rand()%256;
+        pri->pos[2] = rand()%256;
+        pri->parent=multinode;
     }
 
 
@@ -96,6 +98,7 @@ int main() {
     glNamedBufferStorage(ebo,batch.eb_capacity,batch.eb_data,GL_DYNAMIC_STORAGE_BIT);
 
 
+	
 
     //__________________________________________________
     // VAO
@@ -124,7 +127,7 @@ int main() {
 
     mat4 proj;
     GLuint proj_uniform_loc = glGetUniformLocation(shader_prog,"proj");
-
+    
 
     //__________________________________________________
     // creating the camera
@@ -190,15 +193,15 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT);
         multinode->rot[1]+=delta_time*0.1f;
         //__________________________________________________
-        // rendering each vmodel_inst
+        // rendering each prim_inst
         //__________________________________________________
-        for(uint32_t i = 0; i<batch.models.len; ++i){
-            vmodel_inst * inst = VEC_GETPTR(&batch.models,vmodel_inst,i);
+        for(uint32_t i = 0; i<batch.primitives.len; ++i){
+            prim_inst * inst = VEC_GETPTR(&batch.primitives,prim_inst,i);
             {inst->rot[0]+=delta_time*0.5f; inst->rot[2]+=delta_time;} //debug moving the model
             //if(i==0){inst->rot[1]+=delta_time*0.2f;} //debug moving the model
             //printf("i:%i, x:%f, y:%f, z:%f\n",i,inst->scale[0],inst->scale[1],inst->scale[2]);
 
-            vmodel_inst_get_transform(inst,model);
+            prim_inst_get_transform(inst,model);
             camera_get_view(&cam,view);
             glUniformMatrix4fv(proj_uniform_loc,1,GL_FALSE,(float*)proj);
             glUniformMatrix4fv(model_uniform_loc,1,GL_FALSE,(float*)model);
@@ -227,3 +230,6 @@ int main() {
 
     return EXIT_SUCCESS;
 }
+
+
+

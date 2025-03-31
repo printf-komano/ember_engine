@@ -6,7 +6,7 @@
 #include "model/model.h"
 
 
-#define VB_MODELS_CAPACITY 1024
+#define VB_primitiveS_CAPACITY 1024
 
 typedef struct  //batch handler
 {
@@ -20,7 +20,7 @@ typedef struct  //batch handler
     uint32_t eb_len; //the actual number of bytes being used
     uint32_t eb_capacity; //all avilable bytes
 
-    vec models;
+    vec primitives;
 } bhandler;
 
 bhandler bhandler_init(
@@ -41,7 +41,7 @@ GLuint * ebo
     bh.eb_data = (__uint32_t*)malloc(eb_capacity);
     bh.eb_len = 0;
 
-    bh.models = vec_alloc(sizeof(vmodel_inst),VB_MODELS_CAPACITY);
+    bh.primitives = vec_alloc(sizeof(prim_inst),VB_primitiveS_CAPACITY);
     return bh;
 }
 
@@ -89,33 +89,33 @@ __uint32_t bhandler_ecount_render(bhandler * bh){
 void bhandler_free(bhandler * bh){
     free(bh->vb_data);
     free(bh->eb_data);
-    vec_free(&bh->models);
+    vec_free(&bh->primitives);
 }
 
 
 //__________________________________________________
-// model instancing
+// primitive instancing
 //__________________________________________________
 
-//creating the instance from model
-vmodel_inst* bhandler_vmodel_instance(bhandler * bh, vmodel * model){
-    vmodel_inst instance;
-    instance.model = model;
+//creating the instance primitive
+prim_inst* bhandler_prim_instance(bhandler * bh, prim * primitive){
+    prim_inst instance;
+    instance.primitive = primitive;
 
-    instance.vb_start = bhandler_vb_push(bh,model->vb,model->vb_len);
-    instance.vb_len = model->vb_len;
+    instance.vb_start = bhandler_vb_push(bh,primitive->vb,primitive->vb_len);
+    instance.vb_len = primitive->vb_len;
 
-    instance.eb_start = bhandler_eb_push(bh,model->eb,model->eb_len);
-    instance.eb_len = model->eb_len;
+    instance.eb_start = bhandler_eb_push(bh,primitive->eb,primitive->eb_len);
+    instance.eb_len = primitive->eb_len;
 
     instance.parent = NULL;
 
     //glm_mat4_identity(instance.transform);
-    vmodel_inst_def_trtansform(&instance);
+    prim_inst_def_trtansform(&instance);
 
-    if(!instance.vb_start || !instance.eb_start) {printf("ERROR bhandler_vmodel_instance(): cannot place model instance in the buffer.\n");}
+    if(!instance.vb_start || !instance.eb_start) {printf("ERROR bhandler_prim_instance(): cannot place primitive instance in the buffer.\n");}
     
-    return (vmodel_inst*)vec_push(&(bh->models),&instance);
+    return (prim_inst*)vec_push(&(bh->primitives),&instance);
 }
 
 
