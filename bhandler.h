@@ -6,7 +6,7 @@
 #include "model/model.h"
 
 
-#define VB_primitiveS_CAPACITY 1024
+#define VB_PRIM_CAP 1024
 
 typedef struct  //batch handler
 {
@@ -41,7 +41,7 @@ GLuint * ebo
     bh.eb_data = (__uint32_t*)malloc(eb_capacity);
     bh.eb_len = 0;
 
-    bh.primitives = vec_alloc(sizeof(prim_inst),VB_primitiveS_CAPACITY);
+    bh.primitives = vec_alloc(sizeof(prim_inst),VB_PRIM_CAP);
     return bh;
 }
 
