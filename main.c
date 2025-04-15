@@ -112,7 +112,14 @@ int main() {
     // shaders
     //__________________________________________________
     GLuint shader_prog;
-    if(!shader_program_from_files(&shader_prog)){
+
+    //reading source
+    char * vertex_source = read_shader_file("shaders/vertex.glsl");
+    char * fragment_source = read_shader_file("shaders/fragment.glsl");
+    
+       
+
+    if(!shader_program_from_source(&shader_prog, vertex_source, fragment_source)){
         printf("ERROR: no shader program.\n");
         return EXIT_FAILURE;
     }

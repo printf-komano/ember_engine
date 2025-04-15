@@ -64,13 +64,10 @@ bool create_shader_prog(GLuint* prog, GLuint vertex_shader, GLuint fragment_shad
 }
 
 
-bool shader_program_from_files(GLuint * prog){
+bool shader_program_from_source(GLuint * prog, char * vertex_source, char * fragment_source){
     GLuint vertex_shader, fragment_shader;
     
-    //reading source
-    char * vertex_source = read_shader_file("shaders/vertex.glsl");
-    char * fragment_source = read_shader_file("shaders/fragment.glsl");
-    if(!vertex_source || !fragment_source) return false;
+        if(!vertex_source || !fragment_source) return false;
 
     //compilation
     if(!compile_shader(&vertex_shader,GL_VERTEX_SHADER,vertex_source)) return false;

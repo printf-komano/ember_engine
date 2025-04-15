@@ -63,6 +63,9 @@ float * bhandler_vb_push(bhandler * bh, float * elem, __uint32_t n){
 };
 
 
+/*`d bhandler_vb_remove(bhandler * bh, __uint_32_t ind, __uint32_t pos){
+}*/
+
 //remove last n bytes
 void bhandler_eb_pop(bhandler * bh, __uint32_t n){
     bh->eb_len -= n;

@@ -28,7 +28,7 @@
 /*
 The simplest primitive consisting of triangles. 
 Can contain only one material (shader). 
-To assemble a full primitive from several primitives, you will need to use nodes.
+To assemble a full model from several primitives, you will need to use nodes.
 */
 typedef struct //primitive template
 {
@@ -76,8 +76,8 @@ void prim_load_primitive_cgltf(prim *out, const cgltf_primitive *primitive) {
 
             int num_components = 1;
             if (accessor->type == cgltf_type_vec2) num_components = 2;
-            if (accessor->type == cgltf_type_vec3) num_components = 3;
-            if (accessor->type == cgltf_type_vec4) num_components = 4;
+            else if (accessor->type == cgltf_type_vec3) num_components = 3;
+            else if (accessor->type == cgltf_type_vec4) num_components = 4;
 
             float temp[4] = {0}; //max 4 values for attrib
             cgltf_accessor_read_float(accessor, i, temp, num_components);
@@ -115,6 +115,60 @@ void prim_load_primitive_cgltf(prim *out, const cgltf_primitive *primitive) {
         }
     }
 }
+
+
+//__________________________________________________
+// mesh - array of primitives
+// on instancing, should be merged by one node.
+//__________________________________________________
+
+typedef struct{
+    char * name;
+    prim * primitives;
+    
+    // inital mesh transformation
+    vec3 pos;
+    vec3 scale;
+    vec3 rot;
+    
+} mesh;
+
+
+cgltf_data * _model_load_gltf(char * path){
+    cgltf_data * data = NULL; 
+    cgltf_options options = {0};
+    
+    cgltf_result res = cgltf_parse_file(&options,path,&data);
+    if(res != cgltf_result_success) return NULL;
+
+    res = cgltf_load_buffers(&options,data,path);
+    if(res != cgltf_result_success) return NULL;
+
+    res = cgltf_validate(data);
+    if(res != cgltf_result_success) return NULL;
+
+    return data;
+}
+/*
+void model_init_gltf(vec * out, char * path){
+    cgltf_data * data = _vmodel_load_gltf(path);
+    if (!data) return;
+
+    //vec_alloc(sizeof(vmodel*),)
+    
+    for(cgltf_size i=0; i<data->meshes_count; ++i){
+        cgltf_mesh* mesh = &data->meshes[i];
+        for(cgltf_size j=0; j<mesh->primitives_count; ++j){
+            cgltf_primitive * pr = &mesh->primitives[j]; vmodel *vm;
+            vmodel_load_primitive_cgltf(vm,pr);
+            
+
+        }   
+    }
+    
+}
+*/
+
 
 
 //__________________________________________________
