@@ -135,6 +135,8 @@ int main() {
     mat4 proj;
     GLuint proj_uniform_loc = glGetUniformLocation(shader_prog,"proj");
     
+    vec3 light_dir; light_dir[0]=0.0f; light_dir[1]=-1.0f; light_dir[2] = 0.0f;
+    GLuint light_dir_uniform_loc = glGetUniformLocation(shader_prog,"light_dir");
 
     //__________________________________________________
     // creating the camera
@@ -207,9 +209,11 @@ int main() {
             {inst->rot[0]+=delta_time*0.5f; inst->rot[2]+=delta_time;} //debug moving the model
             //if(i==0){inst->rot[1]+=delta_time*0.2f;} //debug moving the model
             //printf("i:%i, x:%f, y:%f, z:%f\n",i,inst->scale[0],inst->scale[1],inst->scale[2]);
-
+            
             prim_inst_get_transform(inst,model);
             camera_get_view(&cam,view);
+
+            glUniform3f(light_dir_uniform_loc,light_dir[0],light_dir[1],light_dir[2]);
             glUniformMatrix4fv(proj_uniform_loc,1,GL_FALSE,(float*)proj);
             glUniformMatrix4fv(model_uniform_loc,1,GL_FALSE,(float*)model);
             glUniformMatrix4fv(view_uniform_loc,1,GL_FALSE,(float*)view);

@@ -39,6 +39,9 @@ typedef struct //primitive template
 
     uint32_t * eb; //local triangles buffer 
     uint32_t eb_len; //length of the original triangles buffer (in bytes)
+    
+    
+    GLuint shader_prog; //the single primitive support only one shader program
 } prim; 
 
 

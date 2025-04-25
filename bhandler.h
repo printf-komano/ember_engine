@@ -113,7 +113,7 @@ prim_inst* bhandler_prim_instance(bhandler * bh, prim * primitive){
 
     instance.parent = NULL;
 
-    //glm_mat4_identity(instance.transform);
+    //glm_mat6_identity(instance.transform);
     prim_inst_def_trtansform(&instance);
 
     if(!instance.vb_start || !instance.eb_start) {printf("ERROR bhandler_prim_instance(): cannot place primitive instance in the buffer.\n");}
