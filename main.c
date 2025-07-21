@@ -20,6 +20,8 @@
 #define WIDTH 1024
 #define HEIGHT 1024
 
+
+
 int main() {
     SDL_Init(SDL_INIT_VIDEO);
     //__________________________________________________
@@ -84,7 +86,7 @@ int main() {
     multinode->pos[2] = 56;
 
     //adding objects in a loop (testing)
-    for(uint16_t i = 0; i < 500; ++i){
+    for(uint16_t i = 0; i < 100; ++i){
         prim_inst* pri = bhandler_prim_instance(&batch,&color_rect);
         pri->pos[0] = rand()%256;
         pri->pos[1] = rand()%256;
@@ -148,7 +150,7 @@ int main() {
     //__________________________________________________
     // main loop
     //__________________________________________________
-    uint64_t prev_tick = SDL_GetTicks();
+    uint32_t prev_tick = SDL_GetTicks();
     
     glEnable(GL_CULL_FACE); glCullFace(GL_BACK);
     glEnable(GL_DEPTH_TEST); 
@@ -160,22 +162,23 @@ int main() {
         //__________________________________________________
         // delta time
         //__________________________________________________
-        uint64_t current_tick = SDL_GetTicks();
+        uint32_t current_tick = SDL_GetTicks();
         float delta_time = ((float)current_tick-(float)prev_tick)*0.001f;
         prev_tick = current_tick;
-        printf("fps: %f\n",1.0f/delta_time);
+        //printf("fps: %f\n",1.0f/delta_time);
 
         //__________________________________________________
         // mouse control
         //__________________________________________________
-        float _mousex, _mousey; //new mouse coordinates
-        /*used for debugging*/
-        if(SDL_GetMouseState(&_mousex,&_mousey) & SDL_BUTTON_LMASK){
+        emb_mouse_delta(&mousedx,&mousedy);
+        //printf("mouse: dx=%f, dy=%f\n",mousedx, mousedy);
+        if(true){
             cam.rot[0] = glm_clamp(cam.rot[0]+mousedy*0.4f,-1.4f,1.4f);
             cam.rot[1] += mousedx*0.4f;
         }
-        mousedx = (_mousex-mousex) * delta_time; mousedy = (_mousey-mousey) * delta_time; //defference in coordinates
-        mousex=_mousex; mousey=_mousey;
+        
+
+
 
         SDL_Event event;
         while (SDL_PollEvent(&event))
@@ -207,9 +210,7 @@ int main() {
         for(uint32_t i = 0; i<batch.primitives.len; ++i){
             prim_inst * inst = VEC_GETPTR(&batch.primitives,prim_inst,i);
             {inst->rot[0]+=delta_time*0.5f; inst->rot[2]+=delta_time;} //debug moving the model
-            //if(i==0){inst->rot[1]+=delta_time*0.2f;} //debug moving the model
-            //printf("i:%i, x:%f, y:%f, z:%f\n",i,inst->scale[0],inst->scale[1],inst->scale[2]);
-            
+                        
             prim_inst_get_transform(inst,model);
             camera_get_view(&cam,view);
 
