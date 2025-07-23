@@ -170,9 +170,11 @@ int main() {
         //__________________________________________________
         // mouse control
         //__________________________________________________
-        emb_mouse_delta(&mousedx,&mousedy);
-        //printf("mouse: dx=%f, dy=%f\n",mousedx, mousedy);
-        if(true){
+        mousedx = 0.0f; mousedy = 0.0f;
+        uint32_t mouse_state = emb_mouse_delta(&mousedx,&mousedy);
+        mousedx*=EMB_INPUT_TICKLEN; mousedy*=EMB_INPUT_TICKLEN;
+        printf("mouse: dx=%f, dy=%f\n",mousedx, mousedy);
+        if(mouse_state){
             cam.rot[0] = glm_clamp(cam.rot[0]+mousedy*0.4f,-1.4f,1.4f);
             cam.rot[1] += mousedx*0.4f;
         }

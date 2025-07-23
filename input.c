@@ -2,7 +2,7 @@
 #include <SDL3/SDL.h>
 #include <cglm/cglm.h>
 
-#define EMB_INPUT_TICKLEN 0.001f
+#define EMB_INPUT_TICKLEN 0.01f
 
 
 float EMB_MOUSE_X = 0.0f;
@@ -17,13 +17,11 @@ bool emb_mouse_delta(float * dx, float * dy){
 
     //new mouse coordinates
     float newx, newy; 
-    if(!SDL_GetGlobalMouseState(&newx,&newy)){
-        return false;
-    }
+    uint32_t state = SDL_GetGlobalMouseState(&newx,&newy);
 
     //return difference
-    *dx = (newx-EMB_MOUSE_X) * dtime;
-    *dy = (newy-EMB_MOUSE_Y) * dtime;
+    *dx = (newx-EMB_MOUSE_X);
+    *dy = (newy-EMB_MOUSE_Y);
 
     //reassign current values
     EMB_MOUSE_X = newx;
@@ -31,7 +29,7 @@ bool emb_mouse_delta(float * dx, float * dy){
     EMB_MOUSE_LASTCHANGE = current_time;
 
     //TODO : change this check later lol
-    return *dx != 0.0f && *dy != 0.0f;
+    return state;
 }
 
 
