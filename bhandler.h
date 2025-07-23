@@ -6,7 +6,7 @@
 #include "model/model.h"
 
 
-#define VB_PRIM_CAP 1024
+#define EMB_VB_PRIM_CAP 1024
 
 typedef struct  //batch handler
 {
@@ -21,15 +21,15 @@ typedef struct  //batch handler
     uint32_t eb_capacity; //all avilable bytes
 
     vec primitives;
-} bhandler;
+} emb_bhandler;
 
-bhandler bhandler_init(
+emb_bhandler emb_bhandler_init(
 uint32_t vb_capacity/*in bytes*/, 
 GLuint * vbo/*should be initalised by gl*/, 
 uint32_t eb_capacity, 
 GLuint * ebo 
 ){
-    bhandler bh; 
+    emb_bhandler bh; 
 
     bh.vbo = vbo;
     bh.vb_capacity = vb_capacity;
@@ -41,7 +41,7 @@ GLuint * ebo
     bh.eb_data = (__uint32_t*)malloc(eb_capacity);
     bh.eb_len = 0;
 
-    bh.primitives = vec_alloc(sizeof(prim_inst),VB_PRIM_CAP);
+    bh.primitives = vec_alloc(sizeof(emb_prim_inst),EMB_VB_PRIM_CAP);
     return bh;
 }
 
@@ -50,12 +50,12 @@ GLuint * ebo
 //__________________________________________________
 
 //remove last n bytes
-void bhandler_vb_pop(bhandler * bh, __uint32_t n){
+void emb_bhandler_vb_pop(emb_bhandler * bh, __uint32_t n){
     bh->vb_len -= n;
     if(bh->vb_len<0) bh->vb_len=0;
 };
 //push back n bytes
-float * bhandler_vb_push(bhandler * bh, float * elem, __uint32_t n){
+float * emb_bhandler_vb_push(emb_bhandler * bh, float * elem, __uint32_t n){
     if(bh->vb_len+n >= bh->vb_capacity) {printf("ERROR vb_push(): vb out of memory."); return NULL;}
     memcpy(bh->vb_data+(bh->vb_len/sizeof(float)),elem,n);
     bh->vb_len+=n;
@@ -63,16 +63,16 @@ float * bhandler_vb_push(bhandler * bh, float * elem, __uint32_t n){
 };
 
 
-/*`d bhandler_vb_remove(bhandler * bh, __uint_32_t ind, __uint32_t pos){
+/*`d bhandler_vb_remove(emb_bhandler * bh, __uint_32_t ind, __uint32_t pos){
 }*/
 
 //remove last n bytes
-void bhandler_eb_pop(bhandler * bh, __uint32_t n){
+void emb_bhandler_eb_pop(emb_bhandler * bh, __uint32_t n){
     bh->eb_len -= n;
     if(bh->eb_len<0) bh->eb_len=0;
 };
 //push back n bytes
-__uint32_t * bhandler_eb_push(bhandler * bh, __uint32_t * elem, __uint32_t n){
+__uint32_t * emb_bhandler_eb_push(emb_bhandler * bh, __uint32_t * elem, __uint32_t n){
     if(bh->eb_len+n >= bh->eb_capacity) {printf("ERROR vb_push(): eb out of memory."); return NULL;}
     memcpy(bh->eb_data+(bh->eb_len/sizeof(__uint32_t)),elem,n);
     uint32_t * last_elem_addr = bh->eb_data + bh->eb_len; 
@@ -82,14 +82,14 @@ __uint32_t * bhandler_eb_push(bhandler * bh, __uint32_t * elem, __uint32_t n){
 
 
 //number of elements for rendering
-__uint32_t bhandler_ecount_render(bhandler * bh){   
+__uint32_t emb_bhandler_ecount_render(emb_bhandler * bh){   
     return bh->eb_len/sizeof(__uint32_t);
 };
 
 
 
 
-void bhandler_free(bhandler * bh){
+void emb_bhandler_free(emb_bhandler * bh){
     free(bh->vb_data);
     free(bh->eb_data);
     vec_free(&bh->primitives);
@@ -101,14 +101,14 @@ void bhandler_free(bhandler * bh){
 //__________________________________________________
 
 //creating the instance primitive
-prim_inst* bhandler_prim_instance(bhandler * bh, prim * primitive){
-    prim_inst instance;
+emb_prim_inst* emb_bhandler_instantiate(emb_bhandler * bh, emb_prim * primitive){
+    emb_prim_inst instance;
     instance.primitive = primitive;
 
-    instance.vb_start = bhandler_vb_push(bh,primitive->vb,primitive->vb_len);
+    instance.vb_start = emb_bhandler_vb_push(bh,primitive->vb,primitive->vb_len);
     instance.vb_len = primitive->vb_len;
 
-    instance.eb_start = bhandler_eb_push(bh,primitive->eb,primitive->eb_len);
+    instance.eb_start = emb_bhandler_eb_push(bh,primitive->eb,primitive->eb_len);
     instance.eb_len = primitive->eb_len;
 
     instance.parent = NULL;
@@ -116,9 +116,9 @@ prim_inst* bhandler_prim_instance(bhandler * bh, prim * primitive){
     //glm_mat6_identity(instance.transform);
     prim_inst_def_trtansform(&instance);
 
-    if(!instance.vb_start || !instance.eb_start) {printf("ERROR bhandler_prim_instance(): cannot place primitive instance in the buffer.\n");}
+    if(!instance.vb_start || !instance.eb_start) {printf("ERROR emb_bhandler_instantiate(): cannot place primitive instance in the buffer.\n");}
     
-    return (prim_inst*)vec_push(&(bh->primitives),&instance);
+    return (emb_prim_inst*)vec_push(&(bh->primitives),&instance);
 }
 
 

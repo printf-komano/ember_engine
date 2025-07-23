@@ -28,7 +28,7 @@ int main() {
     // CREATE WINDOW
     //__________________________________________________
     SDL_Window* window = SDL_CreateWindow("ember", WIDTH, HEIGHT,
-        SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_TRANSPARENT
+        SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE
     );
     if(window==NULL) return EXIT_FAILURE;
 
@@ -43,7 +43,7 @@ int main() {
     // vertex buffer and element buffer
     //__________________________________________________
     GLuint vbo, ebo, vao;
-    bhandler batch = bhandler_init(2000024*1024, &vbo, 2000024*1024, &ebo);
+    emb_bhandler batch = emb_bhandler_init(2000024*1024, &vbo, 2000024*1024, &ebo);
     glCreateBuffers(1,&vbo);
     glCreateBuffers(1,&ebo);
 
@@ -51,15 +51,15 @@ int main() {
     // add the debug figures
     //__________________________________________________
 
-    prim color_rect = prim_test_rectangle();
-    prim_inst* pr0 = bhandler_prim_instance(&batch,&color_rect);
-    prim_inst* pr1 = bhandler_prim_instance(&batch,&color_rect);
+    emb_prim color_rect = emb_debug_rainbow_cube();
+    emb_prim_inst* pr0 = emb_bhandler_instantiate(&batch,&color_rect);
+    emb_prim_inst* pr1 = emb_bhandler_instantiate(&batch,&color_rect);
 
     
     /*create new node pool - can be 1 or more*/
-    node_pool nodepool;
-    node_pool_init(&nodepool,1024);
-    node* n = node_pool_add_node(&nodepool);
+    emb_node_pool nodepool;
+    emb_node_pool_init(&nodepool,1024);
+    emb_node* n = emb_node_pool_push(&nodepool);
 
     /*apply some transformations to the node*/
     n->pos[2] = -0.5f;
@@ -80,14 +80,14 @@ int main() {
     pr1->parent = n;
 
 
-    node* multinode = node_pool_add_node(&nodepool);
+    emb_node* multinode = emb_node_pool_push(&nodepool);
     multinode->pos[0] = 56;
     multinode->pos[1] = 56;
     multinode->pos[2] = 56;
 
     //adding objects in a loop (testing)
     for(uint16_t i = 0; i < 100; ++i){
-        prim_inst* pri = bhandler_prim_instance(&batch,&color_rect);
+        emb_prim_inst* pri = emb_bhandler_instantiate(&batch,&color_rect);
         pri->pos[0] = rand()%256;
         pri->pos[1] = rand()%256;
         pri->pos[2] = rand()%256;
@@ -105,7 +105,7 @@ int main() {
     //__________________________________________________
     // VAO
     //__________________________________________________
-    app_setup_buffers(&vao,0,vbo,ebo);
+    emb_setup_buffers(&vao,0,vbo,ebo);
     GLuint attrib_pos = 0;
     GLuint attrib_clr = 1;
     glBindVertexArray(vao);
@@ -190,7 +190,7 @@ int main() {
 
         glm_perspective(cam.fov,(float)WIDTH/(float)HEIGHT,0.1f,10000.0f,proj);
 
-        get_keyboard_movement(movement_dir);
+        emb_get_keyboard_movement(movement_dir);
 
         movement_dir[0]*=10.0f;
         movement_dir[1]*=10.0f;
@@ -205,10 +205,10 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT);
         multinode->rot[1]+=delta_time*0.1f;
         //__________________________________________________
-        // rendering each prim_inst
+        // rendering each emb_prim_inst
         //__________________________________________________
         for(uint32_t i = 0; i<batch.primitives.len; ++i){
-            prim_inst * inst = VEC_GETPTR(&batch.primitives,prim_inst,i);
+            emb_prim_inst * inst = VEC_GETPTR(&batch.primitives,emb_prim_inst,i);
             {inst->rot[0]+=delta_time*0.5f; inst->rot[2]+=delta_time;} //debug moving the model
                         
             prim_inst_get_transform(inst,model);
@@ -237,8 +237,8 @@ int main() {
     SDL_DestroyWindow(window);
     SDL_Quit();
 
-    bhandler_free(&batch);
-    node_pool_free(&nodepool);
+    emb_bhandler_free(&batch);
+    emb_node_pool_free(&nodepool);
 
     return EXIT_SUCCESS;
 }

@@ -36,7 +36,7 @@ bool emb_mouse_delta(float * dx, float * dy){
 
 
 
-void get_keyboard_movement (vec3 dir){
+void emb_get_keyboard_movement (vec3 dir){
     const bool * keyboard_state = SDL_GetKeyboardState(NULL);
 
     //Z

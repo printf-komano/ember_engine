@@ -22,7 +22,7 @@
 #define VB_ATTRIB_SIZE_MAX 11
 
 //__________________________________________________
-// prim - unique sample of the primitive
+// emb_prim - unique sample of the primitive
 //__________________________________________________
 
 /*
@@ -42,12 +42,12 @@ typedef struct //primitive template
     
     
     GLuint shader_prog; //the single primitive support only one shader program
-} prim; 
+} emb_prim; 
 
 
 
 
-void prim_load_primitive_cgltf(prim *out, const cgltf_primitive *primitive) {
+void prim_load_primitive_cgltf(emb_prim *out, const cgltf_primitive *primitive) {
     size_t num_vertices = 0;
     size_t num_indices = 0;
     size_t vertex_stride = VB_ATTRIB_SIZE_MAX;
@@ -121,20 +121,20 @@ void prim_load_primitive_cgltf(prim *out, const cgltf_primitive *primitive) {
 
 
 //__________________________________________________
-// mesh - array of primitives
+// emb_mesh - array of primitives
 // on instancing, should be merged by one node.
 //__________________________________________________
 
 typedef struct{
     char * name;
-    prim * primitives;
+    emb_prim * primitives;
     
     // inital mesh transformation
     vec3 pos;
     vec3 scale;
     vec3 rot;
     
-} mesh;
+} emb_mesh;
 
 
 cgltf_data * _model_load_gltf(char * path){
@@ -175,11 +175,11 @@ void model_init_gltf(vec * out, char * path){
 
 
 //__________________________________________________
-// prim_inst - instance of the primitive
+// emb_prim_inst - instance of the primitive
 //__________________________________________________
 typedef struct //vertex primitive (instance)
 {    
-    prim * primitive; //reference to the original primitive
+    emb_prim * primitive; //reference to the original primitive
 
     /*
     If the primitive is created successfully, 
@@ -199,12 +199,12 @@ typedef struct //vertex primitive (instance)
     vec3 rot;
 
     // reference to the parent node. child node will inherit all the transformations.
-    node * parent; 
+    emb_node * parent; 
 
-} prim_inst; 
+} emb_prim_inst; 
 
 
-void prim_inst_get_transform(prim_inst * pr, mat4 m){
+void prim_inst_get_transform(emb_prim_inst * pr, mat4 m){
     glm_mat4_identity(m);
     glm_euler_xyz(pr->rot,m);
     glm_scale(m,pr->scale); //not affected by rotation
@@ -212,12 +212,12 @@ void prim_inst_get_transform(prim_inst * pr, mat4 m){
 
     if(pr->parent != NULL && pr->parent->node_state!=NODE_STATE_NONE){
         mat4 parent_tr;
-        node_get_transform(pr->parent,parent_tr);
+        emb_node_get_transform(pr->parent,parent_tr);
         glm_mat4_mul(parent_tr,m,m);
     }
 };
 
-void prim_inst_def_trtansform(prim_inst * pr){
+void prim_inst_def_trtansform(emb_prim_inst * pr){
     pr->pos[0] = 0.0f; pr->pos[1] = 0.0f; pr->pos[2] = 0.0f;
     pr->rot[0] = 0.0f; pr->rot[1] = 0.0f; pr->rot[2] = 0.0f;
     pr->scale[0] = 1.0f; pr->scale[1] = 1.0f; pr->scale[2] = 1.0f;
@@ -238,7 +238,7 @@ void prim_inst_def_trtansform(prim_inst * pr){
 
 
 //primitive used for debugging (vertices)
-float _prim_test_rectangle_vertices[] = {
+static float prim_test_rectangle_vertices[] = {
         /*pos                       colors          uv      normals */
         -0.5f, -0.5f, -0.5f,    1.2f, 0.2f, 0.2f,   0,0,    -0.5773,-0.5773,-0.5773, //0
         0.5f, -0.5f, -0.5f, 0.2f, 1.2f, 0.2f,       0,0,    0.5773,-0.5773,-0.5773, //1
@@ -251,7 +251,7 @@ float _prim_test_rectangle_vertices[] = {
         -0.5f, 0.5f, 0.5f, 0.2f, 0.2f, 0.2f,        0,0,    -0.5773,0.5773,0.5773, //6
         0.5f, 0.5f, 0.5f, 0.2f, 0.2f, 0.2f,         0,0,    0.5773,0.5773,0.5773, //7
 };
-__uint32_t _prim_test_rectangle_elements[] = {
+static __uint32_t prim_test_rectangle_elements[] = {
     1,0,2,
     1,2,3, //fron
 
@@ -271,14 +271,14 @@ __uint32_t _prim_test_rectangle_elements[] = {
     6,5,7,
 };
 //primitive used for debugging
-prim prim_test_rectangle(){
-    prim m;
+emb_prim emb_debug_rainbow_cube(){
+    emb_prim m;
     
-    m.vb = _prim_test_rectangle_vertices;
-    m.eb = _prim_test_rectangle_elements;
+    m.vb = prim_test_rectangle_vertices;
+    m.eb = prim_test_rectangle_elements;
     //m.transform   
     m.use_vertex_colors = true;
-    m.vb_len = sizeof(_prim_test_rectangle_vertices);
-    m.eb_len = sizeof(_prim_test_rectangle_elements);
+    m.vb_len = sizeof(prim_test_rectangle_vertices);
+    m.eb_len = sizeof(prim_test_rectangle_elements);
     return m;
 }

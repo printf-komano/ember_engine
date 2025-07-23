@@ -21,14 +21,14 @@ typedef struct{
     
     GLuint vbo, ebo, vao; //buffers for opengl
 
-    bhandler* batches; //main batch is 0
+    emb_bhandler* batches; //main batch is 0
 }app;
 
 
 
 
 
-void app_setup_buffers(GLuint * vao, GLuint vao_binding_point, GLuint vbo, GLuint ebo){
+void emb_setup_buffers(GLuint * vao, GLuint vao_binding_point, GLuint vbo, GLuint ebo){
     GLuint attrib_pos = 0, attrib_clr = 1;
     glCreateVertexArrays(1,vao);
     glVertexArrayVertexBuffer(

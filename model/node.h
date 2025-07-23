@@ -8,20 +8,20 @@
 #define NODE_STATE_ACTIVE 1
 #define NODE_STATE_IGNORE 2 
 
-typedef struct node node;
+typedef struct emb_node emb_node;
 
 /*node allows to apply recursive transformations 
 to the models on the scene or to each other.*/
-typedef struct node {
+typedef struct emb_node {
     uint8_t node_state;
     vec3 pos;
     vec3 rot;
     vec3 scale;
-    node* parent; //reference to the parent in node_pool
-}node;
+    emb_node* parent; //reference to the parent in emb_node_pool
+}emb_node;
 
 
-void node_init(node * n){
+void emb_node_init(emb_node * n){
     n->pos[0]=0.0f; n->pos[1]=0.0f; n->pos[2]=0.0f;
     n->rot[0]=0.0f; n->rot[1]=0.0f; n->rot[2]=0.0f;
     n->scale[0]=1.0f; n->scale[1]=1.0f; n->scale[2]=1.0f;
@@ -32,14 +32,14 @@ void node_init(node * n){
 
 
 
-void node_get_transform(node * n, mat4 m){
+void emb_node_get_transform(emb_node * n, mat4 m){
     glm_mat4_identity(m);
     glm_euler_xyz(n->rot,m);
     glm_scale(m,n->scale); //not affected by rotation
     glm_translated(m,n->pos); //not affected by scale rotation
     if(n->parent != NULL && n->parent->node_state!=NODE_STATE_NONE){
         mat4 parent_tr;
-        node_get_transform(n->parent,parent_tr);
+        emb_node_get_transform(n->parent,parent_tr);
         glm_mat4_mul(parent_tr,m,m);
     }
 };
@@ -57,7 +57,7 @@ typedef struct
     /*Array will be allocated only once. 
     Even if realloc will be introduced, 
     it's gonna be pretty slow.*/
-    node * nodes; 
+    emb_node * nodes; 
     
     /*optimisation stuff. When new node added, value increases by 1.
     it will increase, until array is full. If so, it will become 0
@@ -66,26 +66,26 @@ typedef struct
 
     size_t capacity; //measured in number of elements
 
-}node_pool;
+}emb_node_pool;
 
 
-void node_pool_init(node_pool * np, size_t capacity){
-    np->nodes = malloc(capacity*sizeof(node));
+void emb_node_pool_init(emb_node_pool * np, size_t capacity){
+    np->nodes = malloc(capacity*sizeof(emb_node));
     for(uint32_t i=0; i<capacity; ++i) np->nodes[i].node_state = NODE_STATE_NONE;
     np->capacity = capacity;
     np->last_index = 0;
 }
 
 
-void node_pool_remove_node(node_pool * np, size_t index){
+void emb_node_pool_remove_node(emb_node_pool * np, size_t index){
     if(index>=np->capacity) return;
     np->nodes[index].node_state = NODE_STATE_NONE;
 }
 
 
-node * node_pool_add_node(node_pool * np){
+emb_node * emb_node_pool_push(emb_node_pool * np){
     if(np->last_index < np->capacity && np->nodes[np->last_index].node_state == NODE_STATE_NONE){ //if has free space at back
-        node_init(&np->nodes[np->last_index]); 
+        emb_node_init(&np->nodes[np->last_index]); 
         ++np->last_index; //increase last index
         return &np->nodes[np->last_index-1];
     }
@@ -94,7 +94,7 @@ node * node_pool_add_node(node_pool * np){
         while (np->last_index < np->capacity)
         {
             if(np->nodes[np->last_index].node_state == NODE_STATE_NONE){
-                node_init(&np->nodes[np->last_index]); 
+                emb_node_init(&np->nodes[np->last_index]); 
                 ++np->last_index;
                 return &np->nodes[np->last_index-1];
             }
@@ -104,13 +104,13 @@ node * node_pool_add_node(node_pool * np){
     }
 }
 
-node * node_pool_get(node_pool * np, int32_t index){
+emb_node * emb_node_pool_get(emb_node_pool * np, int32_t index){
     if(index<0 || index>=np->capacity || np->nodes[index].node_state==NODE_STATE_NONE) return NULL;
     return &np->nodes[index];
 }
 
 
-void node_pool_free(node_pool * np){
+void emb_node_pool_free(emb_node_pool * np){
     free(np->nodes);
 }
 
