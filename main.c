@@ -4,6 +4,7 @@
 #include <cglm/cglm.h>
 
 #include <stdio.h>
+#include <math.h>
 
 
 #include "utils/vector.h"
@@ -19,6 +20,25 @@
 
 #define WIDTH 1024
 #define HEIGHT 1024
+
+float MOUSE_DEBUG_SENS = 0.01f;
+
+
+
+float ISOF_SCALE = 0.4f;
+float ISOF_VALUE = 2.0f;
+
+float f(float x, float y, float z){
+    return sinf(x)+sinf(y)+sinf(z);
+}
+bool isof(float x, float y, float z){
+    return
+        ( f(x*ISOF_SCALE,y*ISOF_SCALE,z*ISOF_SCALE) ) 
+        >= ISOF_VALUE
+        &&
+        ( f(x*ISOF_SCALE,y*ISOF_SCALE,z*ISOF_SCALE) ) 
+        < ISOF_VALUE+0.5f;
+}
 
 
 
@@ -52,8 +72,11 @@ int main() {
     //__________________________________________________
 
     emb_prim color_rect = emb_debug_rainbow_cube();
-    emb_prim_inst* pr0 = emb_bhandler_instantiate(&batch,&color_rect);
-    emb_prim_inst* pr1 = emb_bhandler_instantiate(&batch,&color_rect);
+    emb_prim white_cube = emb_white_cube();
+
+
+    emb_prim_inst* pr0 = emb_bhandler_instantiate(&batch,&white_cube);
+    emb_prim_inst* pr1 = emb_bhandler_instantiate(&batch,&white_cube);
 
     
     /*create new node pool - can be 1 or more*/
@@ -81,23 +104,52 @@ int main() {
 
 
     emb_node* multinode = emb_node_pool_push(&nodepool);
-    multinode->pos[0] = 56;
-    multinode->pos[1] = 56;
-    multinode->pos[2] = 56;
+    multinode->pos[0] = 0;
+    multinode->pos[1] = 0;
+    multinode->pos[2] = 0;
 
     //adding objects in a loop (testing)
-    for(uint16_t i = 0; i < 100; ++i){
+    /*for(uint16_t i = 0; i < 100; ++i){
         emb_prim_inst* pri = emb_bhandler_instantiate(&batch,&color_rect);
         pri->pos[0] = rand()%256;
         pri->pos[1] = rand()%256;
         pri->pos[2] = rand()%256;
         pri->parent=multinode;
-    }
+    }*/
+    
+    // voxel isosurface
+    for(int i=-25; i<25; ++i){
+        for(int j=-25; j<25; ++j){
+            for(int k=-25; k<25; ++k){
+                if(!isof(i,j,k)) continue;
 
+
+                emb_prim_inst* pri = emb_bhandler_instantiate(&batch,&color_rect);
+                pri->pos[0] = i;
+                pri->pos[1] = j;
+                pri->pos[2] = k;
+                pri->parent=multinode;
+            }
+        }
+    }
 
 
     glNamedBufferStorage(vbo,batch.vb_capacity,batch.vb_data,GL_DYNAMIC_STORAGE_BIT);
     glNamedBufferStorage(ebo,batch.eb_capacity,batch.eb_data,GL_DYNAMIC_STORAGE_BIT);
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+
 
 
 	
@@ -173,7 +225,7 @@ int main() {
         mousedx = 0.0f; mousedy = 0.0f;
         uint32_t mouse_state = emb_mouse_delta(&mousedx,&mousedy);
         mousedx*=EMB_INPUT_TICKLEN; mousedy*=EMB_INPUT_TICKLEN;
-        printf("mouse: dx=%f, dy=%f\n",mousedx, mousedy);
+        //printf("mouse: dx=%f, dy=%f\n",mousedx, mousedy);
         if(mouse_state){
             cam.rot[0] = glm_clamp(cam.rot[0]+mousedy*0.4f,-1.4f,1.4f);
             cam.rot[1] += mousedx*0.4f;
@@ -211,8 +263,7 @@ int main() {
         //__________________________________________________
         for(uint32_t i = 0; i<batch.primitives.len; ++i){
             emb_prim_inst * inst = VEC_GETPTR(&batch.primitives,emb_prim_inst,i);
-            {inst->rot[0]+=delta_time*0.5f; inst->rot[2]+=delta_time;} //debug moving the model
-                        
+                                    
             prim_inst_get_transform(inst,model);
             camera_get_view(&cam,view);
 
@@ -223,7 +274,12 @@ int main() {
             void * eoffset = (void*)( (inst->eb_start - batch.eb_data));
             
 
-            glDrawElements(GL_TRIANGLES,inst->eb_len/sizeof(uint32_t),GL_UNSIGNED_INT,eoffset);
+            glDrawElements(
+                GL_TRIANGLES,
+                inst->eb_len/sizeof(uint32_t),
+                GL_UNSIGNED_INT,
+                eoffset
+            );
         }
 
         SDL_GL_SwapWindow(window);

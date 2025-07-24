@@ -198,8 +198,15 @@ typedef struct //vertex primitive (instance)
     vec3 scale;
     vec3 rot;
 
+    //Shader pverrides
+    GLuint shader_vertex;
+    bool shader_vertex_enabled;
+    GLuint shader_fragment;
+    bool shader_fragment_enabled;
+
+
     // reference to the parent node. child node will inherit all the transformations.
-    emb_node * parent; 
+    emb_node * parent;
 
 } emb_prim_inst; 
 
@@ -238,20 +245,37 @@ void prim_inst_def_trtansform(emb_prim_inst * pr){
 
 
 //primitive used for debugging (vertices)
-static float prim_test_rectangle_vertices[] = {
+static float rainbow_cube_vertices[] = {
         /*pos                       colors          uv      normals */
         -0.5f, -0.5f, -0.5f,    1.2f, 0.2f, 0.2f,   0,0,    -0.5773,-0.5773,-0.5773, //0
-        0.5f, -0.5f, -0.5f, 0.2f, 1.2f, 0.2f,       0,0,    0.5773,-0.5773,-0.5773, //1
-        -0.5f, 0.5f, -0.5f, 0.2f, 0.2f, 1.2f,       0,0,    -0.5773,0.5773,-0.5773,//2
-        0.5f, 0.5f, -0.5f, 1.2f, 0.2f, 0.2f,        0,0,    0.5773,0.5773,-0.5773, //3
+        0.5f, -0.5f, -0.5f,     0.2f, 1.2f, 0.2f,   0,0,    0.5773,-0.5773,-0.5773, //1
+        -0.5f, 0.5f, -0.5f,     0.2f, 0.2f, 1.2f,   0,0,    -0.5773,0.5773,-0.5773,//2
+        0.5f, 0.5f, -0.5f,      1.2f, 0.2f, 0.2f,   0,0,    0.5773,0.5773,-0.5773, //3
 
 
-        -0.5f, -0.5f, 0.5f, 0.2f, 0.2f, 0.2f,       0,0,    -0.5773,-0.5773,0.5773,//4
-       0.5f, -0.5f, 0.5f, 0.2f, 0.2f, 0.2f,         0,0,    0.5773,-0.5773,0.5773,//5
-        -0.5f, 0.5f, 0.5f, 0.2f, 0.2f, 0.2f,        0,0,    -0.5773,0.5773,0.5773, //6
-        0.5f, 0.5f, 0.5f, 0.2f, 0.2f, 0.2f,         0,0,    0.5773,0.5773,0.5773, //7
+        -0.5f, -0.5f, 0.5f,     0.2f, 0.2f, 0.2f,   0,0,    -0.5773,-0.5773,0.5773,//4
+       0.5f, -0.5f, 0.5f,       0.2f, 0.2f, 0.2f,   0,0,    0.5773,-0.5773,0.5773,//5
+        -0.5f, 0.5f, 0.5f,      0.2f, 0.2f, 0.2f,   0,0,    -0.5773,0.5773,0.5773, //6
+        0.5f, 0.5f, 0.5f,       0.2f, 0.2f, 0.2f,   0,0,    0.5773,0.5773,0.5773, //7
 };
-static __uint32_t prim_test_rectangle_elements[] = {
+static float white_cube_vertices[] = {
+        /*pos                       colors          uv      normals */
+        -0.5f, -0.5f, -0.5f,    1.0f, 1.0f, 1.0f,   0,0,    -0.5773,-0.5773,-0.5773, //0
+        0.5f, -0.5f, -0.5f,     1.0f, 1.0f, 1.0f,   0,0,    0.5773,-0.5773,-0.5773, //1
+        -0.5f, 0.5f, -0.5f,     1.0f, 1.0f, 1.0f,   0,0,    -0.5773,0.5773,-0.5773,//2
+        0.5f, 0.5f, -0.5f,      1.0f, 1.0f, 1.0f,   0,0,    0.5773,0.5773,-0.5773, //3
+
+
+        -0.5f, -0.5f, 0.5f,     1.0f, 1.0f, 1.0f,   0,0,    -0.5773,-0.5773,0.5773,//4
+       0.5f, -0.5f, 0.5f,       1.0f, 1.0f, 1.0f,   0,0,    0.5773,-0.5773,0.5773,//5
+        -0.5f, 0.5f, 0.5f,      1.0f, 1.0f, 1.0f,   0,0,    -0.5773,0.5773,0.5773, //6
+        0.5f, 0.5f, 0.5f,       1.0f, 1.0f, 1.0f,   0,0,    0.5773,0.5773,0.5773, //7
+};
+
+
+
+
+static __uint32_t cube_elements[] = {
     1,0,2,
     1,2,3, //fron
 
@@ -270,15 +294,29 @@ static __uint32_t prim_test_rectangle_elements[] = {
     4,5,6,
     6,5,7,
 };
+
+
 //primitive used for debugging
 emb_prim emb_debug_rainbow_cube(){
     emb_prim m;
     
-    m.vb = prim_test_rectangle_vertices;
-    m.eb = prim_test_rectangle_elements;
+    m.vb = rainbow_cube_vertices;
+    m.eb = cube_elements;
     //m.transform   
     m.use_vertex_colors = true;
-    m.vb_len = sizeof(prim_test_rectangle_vertices);
-    m.eb_len = sizeof(prim_test_rectangle_elements);
+    m.vb_len = sizeof(rainbow_cube_vertices);
+    m.eb_len = sizeof(cube_elements);
+    return m;
+}
+
+emb_prim emb_white_cube(){
+    emb_prim m;
+    
+    m.vb = white_cube_vertices;
+    m.eb = cube_elements;
+    //m.transform   
+    m.use_vertex_colors = true;
+    m.vb_len = sizeof(white_cube_vertices);
+    m.eb_len = sizeof(cube_elements);
     return m;
 }
