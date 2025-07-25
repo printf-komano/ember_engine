@@ -63,7 +63,7 @@ int main() {
     // vertex buffer and element buffer
     //__________________________________________________
     GLuint vbo, ebo, vao;
-    emb_bhandler batch = emb_bhandler_init(2000024, &vbo, 2000024, &ebo);
+    emb_ebvb_handler batch = emb_ebvb_handler_init(2000024, &vbo, 2000024, &ebo);
     glCreateBuffers(1,&vbo);
     glCreateBuffers(1,&ebo);
 
@@ -75,8 +75,8 @@ int main() {
     emb_primitive_origin white_cube = emb_white_cube();
 
 
-    emb_primitive* pr0 = emb_bhandler_instantiate(&batch,&white_cube);
-    emb_primitive* pr1 = emb_bhandler_instantiate(&batch,&white_cube);
+    emb_primitive* pr0 = emb_ebvb_handler_instantiate(&batch,&white_cube);
+    emb_primitive* pr1 = emb_ebvb_handler_instantiate(&batch,&white_cube);
 
     
     /*create new node pool - can be 1 or more*/
@@ -110,7 +110,7 @@ int main() {
 
     //adding objects in a loop (testing)
     /*for(uint16_t i = 0; i < 1000; ++i){
-        emb_primitive* pri = emb_bhandler_instantiate(&batch,&color_rect);
+        emb_primitive* pri = emb_ebvb_handler_instantiate(&batch,&color_rect);
         pri->pos[0] = rand()%256 - 128;
         pri->pos[1] = rand()%256 - 128;
         pri->pos[2] = rand()%256 - 128;
@@ -125,7 +125,7 @@ int main() {
                 if(!isof(i,j,k)) continue;
 
 
-                emb_primitive* pri = emb_bhandler_instantiate(&batch,&white_cube);
+                emb_primitive* pri = emb_ebvb_handler_instantiate(&batch,&white_cube);
                 pri->pos[0] = i;
                 pri->pos[1] = j;
                 pri->pos[2] = k;
@@ -296,7 +296,7 @@ int main() {
     SDL_DestroyWindow(window);
     SDL_Quit();
 
-    emb_bhandler_free(&batch);
+    emb_ebvb_handler_free(&batch);
     emb_node_pool_free(&nodepool);
 
     return EXIT_SUCCESS;

@@ -21,7 +21,7 @@ typedef struct{
     
     GLuint vbo, ebo, vao; //buffers for opengl
 
-    emb_bhandler* batches; //main batch is 0
+    emb_ebvb_handler* batches; //main batch is 0
 }app;
 
 
