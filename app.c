@@ -36,7 +36,7 @@ void emb_setup_buffers(GLuint * vao, GLuint vao_binding_point, GLuint vbo, GLuin
         vao_binding_point,
         vbo,
         0, //offset is 0
-        (VB_ATTRIB_SIZE_MAX)*sizeof(float) //3 for pos and 3 for color
+        (VB_ATTRIB_SIZE_MAX)*sizeof(float)
     );
     glVertexArrayElementBuffer(*vao,ebo);
 

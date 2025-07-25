@@ -22,7 +22,7 @@
 #define VB_ATTRIB_SIZE_MAX 11
 
 //__________________________________________________
-// emb_prim - unique sample of the primitive
+// emb_primitive_origin - unique sample of the primitive
 //__________________________________________________
 
 /*
@@ -35,19 +35,88 @@ typedef struct //primitive template
     bool use_vertex_colors; //takes 3 elements in buffer
     bool use_uv; //2 additional elements in the buffer
     float * vb; //local vertex buffer 
-    uint32_t vb_len; //length of the original buffer (in bytes)
+    uint32_t vb_len; //length of the original buffer (in elements)
 
     uint32_t * eb; //local triangles buffer 
-    uint32_t eb_len; //length of the original triangles buffer (in bytes)
+    uint32_t eb_len; //length of the original triangles buffer (in elements)
     
     
     GLuint shader_prog; //the single primitive support only one shader program
-} emb_prim; 
+} emb_primitive_origin; 
 
 
 
 
-void prim_load_primitive_cgltf(emb_prim *out, const cgltf_primitive *primitive) {
+
+//__________________________________________________
+// emb_primitive - instance of the primitive
+//__________________________________________________
+typedef struct //vertex primitive (instance)
+{    
+    emb_primitive_origin * primitive; //reference to the original primitive
+
+    /*
+    If the primitive is created successfully, 
+    it gets its own vertex buffer, independent of the unique primitive. 
+    Several instances can share one place in buffer (same vb_start), for optimisation.
+    */
+
+    float * vb_start; //reference to the vertex buffer
+    uint32_t vb_len; //length in the vertex buffer (in elements)
+
+    uint32_t * eb_start; //reference to the element buffer
+    uint32_t eb_len; //length in the element buffer (in elements)
+
+    // mat4 transform; //primitive matrix
+    vec3 pos;
+    vec3 scale;
+    vec3 rot;
+
+    //Shader pverrides
+    GLuint shader_vertex;
+    bool shader_vertex_enabled;
+    GLuint shader_fragment;
+    bool shader_fragment_enabled;
+
+
+    // reference to the parent node. child node will inherit all the transformations.
+    emb_node * parent;
+
+} emb_primitive; 
+
+
+void prim_inst_get_transform(emb_primitive * pr, mat4 m){
+    glm_mat4_identity(m);
+    glm_euler_xyz(pr->rot,m);
+    glm_scale(m,pr->scale); //not affected by rotation
+    glm_translated(m,pr->pos); //not affected by scale rotation
+
+    if(pr->parent != NULL && pr->parent->node_state!=NODE_STATE_NONE){
+        mat4 parent_tr;
+        emb_node_get_transform(pr->parent,parent_tr);
+        glm_mat4_mul(parent_tr,m,m);
+    }
+};
+
+void prim_inst_def_trtansform(emb_primitive * pr){
+    pr->pos[0] = 0.0f; pr->pos[1] = 0.0f; pr->pos[2] = 0.0f;
+    pr->rot[0] = 0.0f; pr->rot[1] = 0.0f; pr->rot[2] = 0.0f;
+    pr->scale[0] = 1.0f; pr->scale[1] = 1.0f; pr->scale[2] = 1.0f;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+void prim_load_primitive_cgltf(emb_primitive_origin *out, const cgltf_primitive *primitive) {
     size_t num_vertices = 0;
     size_t num_indices = 0;
     size_t vertex_stride = VB_ATTRIB_SIZE_MAX;
@@ -127,7 +196,7 @@ void prim_load_primitive_cgltf(emb_prim *out, const cgltf_primitive *primitive) 
 
 typedef struct{
     char * name;
-    emb_prim * primitives;
+    emb_primitive_origin * primitives;
     
     // inital mesh transformation
     vec3 pos;
@@ -171,64 +240,6 @@ void model_init_gltf(vec * out, char * path){
     
 }
 */
-
-
-
-//__________________________________________________
-// emb_prim_inst - instance of the primitive
-//__________________________________________________
-typedef struct //vertex primitive (instance)
-{    
-    emb_prim * primitive; //reference to the original primitive
-
-    /*
-    If the primitive is created successfully, 
-    it gets its own vertex buffer, independent of the unique primitive. 
-    Several instances can share one place in buffer (same vb_start), for optimisation.
-    */
-
-    float * vb_start; //reference to the vertex buffer
-    uint32_t vb_len; //length in the vertex buffer (in bytes)
-
-    uint32_t * eb_start; //reference to the element buffer
-    uint32_t eb_len; //length in the element buffer (in bytes)
-
-    // mat4 transform; //primitive matrix
-    vec3 pos;
-    vec3 scale;
-    vec3 rot;
-
-    //Shader pverrides
-    GLuint shader_vertex;
-    bool shader_vertex_enabled;
-    GLuint shader_fragment;
-    bool shader_fragment_enabled;
-
-
-    // reference to the parent node. child node will inherit all the transformations.
-    emb_node * parent;
-
-} emb_prim_inst; 
-
-
-void prim_inst_get_transform(emb_prim_inst * pr, mat4 m){
-    glm_mat4_identity(m);
-    glm_euler_xyz(pr->rot,m);
-    glm_scale(m,pr->scale); //not affected by rotation
-    glm_translated(m,pr->pos); //not affected by scale rotation
-
-    if(pr->parent != NULL && pr->parent->node_state!=NODE_STATE_NONE){
-        mat4 parent_tr;
-        emb_node_get_transform(pr->parent,parent_tr);
-        glm_mat4_mul(parent_tr,m,m);
-    }
-};
-
-void prim_inst_def_trtansform(emb_prim_inst * pr){
-    pr->pos[0] = 0.0f; pr->pos[1] = 0.0f; pr->pos[2] = 0.0f;
-    pr->rot[0] = 0.0f; pr->rot[1] = 0.0f; pr->rot[2] = 0.0f;
-    pr->scale[0] = 1.0f; pr->scale[1] = 1.0f; pr->scale[2] = 1.0f;
-}
 
 
 
@@ -297,26 +308,26 @@ static __uint32_t cube_elements[] = {
 
 
 //primitive used for debugging
-emb_prim emb_debug_rainbow_cube(){
-    emb_prim m;
+emb_primitive_origin emb_debug_rainbow_cube(){
+    emb_primitive_origin m;
     
     m.vb = rainbow_cube_vertices;
     m.eb = cube_elements;
     //m.transform   
     m.use_vertex_colors = true;
-    m.vb_len = sizeof(rainbow_cube_vertices);
-    m.eb_len = sizeof(cube_elements);
+    m.vb_len = sizeof(rainbow_cube_vertices) / sizeof(float);
+    m.eb_len = sizeof(cube_elements) / sizeof(__uint32_t);
     return m;
 }
 
-emb_prim emb_white_cube(){
-    emb_prim m;
+emb_primitive_origin emb_white_cube(){
+    emb_primitive_origin m;
     
     m.vb = white_cube_vertices;
     m.eb = cube_elements;
     //m.transform   
     m.use_vertex_colors = true;
-    m.vb_len = sizeof(white_cube_vertices);
-    m.eb_len = sizeof(cube_elements);
+    m.vb_len = sizeof(white_cube_vertices) / sizeof(float);
+    m.eb_len = sizeof(cube_elements) / sizeof(__uint32_t);
     return m;
 }

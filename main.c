@@ -63,7 +63,7 @@ int main() {
     // vertex buffer and element buffer
     //__________________________________________________
     GLuint vbo, ebo, vao;
-    emb_bhandler batch = emb_bhandler_init(2000024*1024, &vbo, 2000024*1024, &ebo);
+    emb_bhandler batch = emb_bhandler_init(2000024, &vbo, 2000024, &ebo);
     glCreateBuffers(1,&vbo);
     glCreateBuffers(1,&ebo);
 
@@ -71,12 +71,12 @@ int main() {
     // add the debug figures
     //__________________________________________________
 
-    emb_prim color_rect = emb_debug_rainbow_cube();
-    emb_prim white_cube = emb_white_cube();
+    emb_primitive_origin color_rect = emb_debug_rainbow_cube();
+    emb_primitive_origin white_cube = emb_white_cube();
 
 
-    emb_prim_inst* pr0 = emb_bhandler_instantiate(&batch,&white_cube);
-    emb_prim_inst* pr1 = emb_bhandler_instantiate(&batch,&white_cube);
+    emb_primitive* pr0 = emb_bhandler_instantiate(&batch,&white_cube);
+    emb_primitive* pr1 = emb_bhandler_instantiate(&batch,&white_cube);
 
     
     /*create new node pool - can be 1 or more*/
@@ -109,22 +109,23 @@ int main() {
     multinode->pos[2] = 0;
 
     //adding objects in a loop (testing)
-    /*for(uint16_t i = 0; i < 100; ++i){
-        emb_prim_inst* pri = emb_bhandler_instantiate(&batch,&color_rect);
-        pri->pos[0] = rand()%256;
-        pri->pos[1] = rand()%256;
-        pri->pos[2] = rand()%256;
+    /*for(uint16_t i = 0; i < 1000; ++i){
+        emb_primitive* pri = emb_bhandler_instantiate(&batch,&color_rect);
+        pri->pos[0] = rand()%256 - 128;
+        pri->pos[1] = rand()%256 - 128;
+        pri->pos[2] = rand()%256 - 128;
         pri->parent=multinode;
     }*/
     
+    
     // voxel isosurface
-    for(int i=-25; i<25; ++i){
-        for(int j=-25; j<25; ++j){
-            for(int k=-25; k<25; ++k){
+    for(int i=-50; i<50; ++i){
+        for(int j=-50; j<50; ++j){
+            for(int k=-50; k<50; ++k){
                 if(!isof(i,j,k)) continue;
 
 
-                emb_prim_inst* pri = emb_bhandler_instantiate(&batch,&color_rect);
+                emb_primitive* pri = emb_bhandler_instantiate(&batch,&white_cube);
                 pri->pos[0] = i;
                 pri->pos[1] = j;
                 pri->pos[2] = k;
@@ -132,10 +133,10 @@ int main() {
             }
         }
     }
+    
 
-
-    glNamedBufferStorage(vbo,batch.vb_capacity,batch.vb_data,GL_DYNAMIC_STORAGE_BIT);
-    glNamedBufferStorage(ebo,batch.eb_capacity,batch.eb_data,GL_DYNAMIC_STORAGE_BIT);
+    glNamedBufferStorage(vbo,batch.vb_capacity*sizeof(float),batch.vb_data,GL_DYNAMIC_STORAGE_BIT);
+    glNamedBufferStorage(ebo,batch.eb_capacity*sizeof(__uint32_t),batch.eb_data,GL_DYNAMIC_STORAGE_BIT);
 
 
 
@@ -259,10 +260,10 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT);
         multinode->rot[1]+=delta_time*0.1f;
         //__________________________________________________
-        // rendering each emb_prim_inst
+        // rendering each emb_primitive
         //__________________________________________________
         for(uint32_t i = 0; i<batch.primitives.len; ++i){
-            emb_prim_inst * inst = VEC_GETPTR(&batch.primitives,emb_prim_inst,i);
+            emb_primitive * inst = VEC_GETPTR(&batch.primitives,emb_primitive,i);
                                     
             prim_inst_get_transform(inst,model);
             camera_get_view(&cam,view);
@@ -276,7 +277,7 @@ int main() {
 
             glDrawElements(
                 GL_TRIANGLES,
-                inst->eb_len/sizeof(uint32_t),
+                inst->eb_len,
                 GL_UNSIGNED_INT,
                 eoffset
             );
