@@ -140,11 +140,26 @@ emb_primitive* emb_ebvb_handler_instantiate(emb_ebvb_handler * bh, emb_primitive
     instance.primitive = primitive;
 
     instance.vb_start = ebvb_handler_vb_push(bh,primitive->vb,primitive->vb_len);
-    printf("instance vb_start: %d\n",instance.vb_start);
+    //printf("instance vb_start: %d\n",instance.vb_start);
     instance.vb_len = primitive->vb_len;
+
+    //get vertex index
+    __uint32_t vertex_offset = (instance.vb_start - bh->vb_data)
+        / (VB_ATTRIB_SIZE_MAX);
+    //printf("VB elem offst: %d\n",vertex_offset);
+    
+
 
     instance.eb_start = ebvb_handler_eb_push(bh,primitive->eb,primitive->eb_len);
     instance.eb_len = primitive->eb_len;
+
+    for(size_t i=0; i<primitive->eb_len; ++i){
+        instance.eb_start[i] += vertex_offset;
+        //printf("\tElem %d\n",instance.eb_start[i]);
+    }
+
+
+
 
     instance.parent = NULL;
 

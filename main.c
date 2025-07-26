@@ -26,7 +26,7 @@ float MOUSE_DEBUG_SENS = 0.01f;
 
 
 float ISOF_SCALE = 0.4f;
-float ISOF_VALUE = 2.0f;
+float ISOF_VALUE = 2.5f;
 
 float f(float x, float y, float z){
     return sinf(x)+sinf(y)+sinf(z);
@@ -75,7 +75,7 @@ int main() {
     emb_primitive_origin white_cube = emb_white_cube();
 
 
-    emb_primitive* pr0 = emb_ebvb_handler_instantiate(&batch,&white_cube);
+    emb_primitive* pr0 = emb_ebvb_handler_instantiate(&batch,&color_rect);
     emb_primitive* pr1 = emb_ebvb_handler_instantiate(&batch,&white_cube);
 
     
@@ -109,17 +109,20 @@ int main() {
     multinode->pos[2] = 0;
 
     //adding objects in a loop (testing)
-    /*for(uint16_t i = 0; i < 1000; ++i){
-        emb_primitive* pri = emb_ebvb_handler_instantiate(&batch,&color_rect);
+    for(uint16_t i = 0; i < 1000; ++i){
+        emb_primitive* pri;
+        if(rand() % 100 > 50) pri = emb_ebvb_handler_instantiate(&batch,&color_rect);
+        else pri = emb_ebvb_handler_instantiate(&batch,&white_cube);
+
         pri->pos[0] = rand()%256 - 128;
         pri->pos[1] = rand()%256 - 128;
         pri->pos[2] = rand()%256 - 128;
         pri->parent=multinode;
-    }*/
+    }
     
     
     // voxel isosurface
-    for(int i=-50; i<50; ++i){
+    /*for(int i=-50; i<50; ++i){
         for(int j=-50; j<50; ++j){
             for(int k=-50; k<50; ++k){
                 if(!isof(i,j,k)) continue;
@@ -132,7 +135,7 @@ int main() {
                 pri->parent=multinode;
             }
         }
-    }
+    }*/
     
 
     glNamedBufferStorage(vbo,batch.vb_capacity*sizeof(float),batch.vb_data,GL_DYNAMIC_STORAGE_BIT);
@@ -272,7 +275,7 @@ int main() {
             glUniformMatrix4fv(proj_uniform_loc,1,GL_FALSE,(float*)proj);
             glUniformMatrix4fv(model_uniform_loc,1,GL_FALSE,(float*)model);
             glUniformMatrix4fv(view_uniform_loc,1,GL_FALSE,(float*)view);
-            void * eoffset = (void*)( (inst->eb_start - batch.eb_data));
+            void * eoffset = (void*)( (inst->eb_start - batch.eb_data) *sizeof(__uint32_t) );
             
 
             glDrawElements(
@@ -287,8 +290,11 @@ int main() {
 
     }
 
+   
+
 
     break_main_loop:
+
     glDeleteVertexArrays(1, &vao);
     glDeleteBuffers(1, &vbo);
     glDeleteProgram(shader_prog);
