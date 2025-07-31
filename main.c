@@ -75,8 +75,8 @@ int main() {
     emb_primitive_origin white_cube = emb_white_cube();
 
 
-    emb_primitive* pr0 = emb_ebvb_handler_instantiate(&batch,&color_rect);
-    emb_primitive* pr1 = emb_ebvb_handler_instantiate(&batch,&white_cube);
+    emb_primitive* pr0 = emb_ebvb_handler_instantiate(&batch,&white_cube);
+    emb_primitive* pr1 = emb_ebvb_handler_instantiate(&batch,&color_rect);
 
     
     /*create new node pool - can be 1 or more*/
@@ -109,7 +109,7 @@ int main() {
     multinode->pos[2] = 0;
 
     //adding objects in a loop (testing)
-    for(uint16_t i = 0; i < 1000; ++i){
+    /*for(uint16_t i = 0; i < 1000; ++i){
         emb_primitive* pri;
         if(rand() % 100 > 50) pri = emb_ebvb_handler_instantiate(&batch,&color_rect);
         else pri = emb_ebvb_handler_instantiate(&batch,&white_cube);
@@ -118,7 +118,7 @@ int main() {
         pri->pos[1] = rand()%256 - 128;
         pri->pos[2] = rand()%256 - 128;
         pri->parent=multinode;
-    }
+    }*/
     
     
     // voxel isosurface
@@ -280,20 +280,33 @@ int main() {
 
             glDrawElements(
                 GL_TRIANGLES,
-                inst->eb_len,
+                inst->eb_len, //in elements
                 GL_UNSIGNED_INT,
-                eoffset
+                eoffset //in bytes??? what a hell is this actually.
             );
         }
+        //void * eoffset = (void*)( (batch.ebo + ) );
+        /*glDrawElements(
+                GL_TRIANGLES,
+                batch.eb_len*2,
+                GL_UNSIGNED_INT,
+                0*sizeof(__uint32_t)
+        );*/
 
         SDL_GL_SwapWindow(window);
 
     }
-
-   
+    
 
 
     break_main_loop:
+    
+    printf("\nEBO:\n");
+    for(uint i=0; i<batch.eb_len; ++i){
+        printf("%d, ",batch.eb_data[i]);
+    }
+    printf("\n\n");
+    
 
     glDeleteVertexArrays(1, &vao);
     glDeleteBuffers(1, &vbo);
