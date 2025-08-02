@@ -62,10 +62,10 @@ typedef struct //vertex primitive (instance)
     */
 
     float * vb_start; //reference to the vertex buffer
-    uint32_t vb_len; //length in the vertex buffer (in elements)
+    size_t vb_len; //length in the vertex buffer (in elements)
 
     uint32_t * eb_start; //reference to the element buffer
-    uint32_t eb_len; //length in the element buffer (in elements)
+    size_t eb_len; //length in the element buffer (in elements)
 
     // mat4 transform; //primitive matrix
     vec3 pos;
@@ -73,11 +73,8 @@ typedef struct //vertex primitive (instance)
     vec3 rot;
 
     //Shader pverrides
-    GLuint shader_vertex;
-    bool shader_vertex_enabled;
-    GLuint shader_fragment;
-    bool shader_fragment_enabled;
-
+    GLuint shader_program;
+    bool shader_program_override;
 
     // reference to the parent node. child node will inherit all the transformations.
     emb_node * parent;
@@ -103,6 +100,38 @@ void prim_inst_def_trtansform(emb_primitive * pr){
     pr->rot[0] = 0.0f; pr->rot[1] = 0.0f; pr->rot[2] = 0.0f;
     pr->scale[0] = 1.0f; pr->scale[1] = 1.0f; pr->scale[2] = 1.0f;
 }
+
+
+
+
+
+/*
+there can be few primitives inside the single group;
+they will be drawn in the single draw call, share the same shader program.
+
+it's really likely that new primitives will be unable to add after
+group has been formed (but not sure). 
+
+but there's a great possibility to pre-determine all group and then
+use a single draw calls which significantly increases performance.
+*/
+typedef struct
+{
+    GLuint shader_program;
+
+    float * vb_data;
+    __uint32_t vb_len;
+
+
+    __uint32_t * eb_data;
+    size_t eb_len;
+} emb_primitive_group;
+
+
+
+
+
+
 
 
 

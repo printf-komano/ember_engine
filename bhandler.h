@@ -165,8 +165,7 @@ emb_primitive* emb_ebvb_handler_instantiate(emb_ebvb_handler * bh, emb_primitive
 
 
     //disabled by default
-    instance.shader_vertex_enabled = false;
-    instance.shader_fragment_enabled = false;
+    instance.shader_program_override = false;
 
     //glm_mat6_identity(instance.transform);
     prim_inst_def_trtansform(&instance);

@@ -301,11 +301,11 @@ int main() {
 
     break_main_loop:
     
-    printf("\nEBO:\n");
+    /*printf("\nEBO:\n");
     for(uint i=0; i<batch.eb_len; ++i){
         printf("%d, ",batch.eb_data[i]);
     }
-    printf("\n\n");
+    printf("\n\n");*/
     
 
     glDeleteVertexArrays(1, &vao);
