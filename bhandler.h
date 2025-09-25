@@ -186,5 +186,7 @@ emb_primitive* emb_ebvb_handler_instantiate(emb_ebvb_handler * bh, emb_primitive
 // primitive drawing
 //__________________________________________________
 
+GLuint EMB_DEFAUL_SHADER = 1.0f;
+
 void emb_ebvb_handler_draw_all(emb_ebvb_handler* bh){
 }

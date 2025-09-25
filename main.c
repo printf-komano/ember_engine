@@ -170,19 +170,21 @@ int main() {
     // shaders
     //__________________________________________________
     GLuint shader_prog;
+    GLuint shader_prog_current;
 
     //reading source
     char * vertex_source = read_shader_file("shaders/vertex.glsl");
     char * fragment_source = read_shader_file("shaders/fragment.glsl");
     
-       
-
     if(!shader_program_from_source(&shader_prog, vertex_source, fragment_source)){
         printf("ERROR: no shader program.\n");
         return EXIT_FAILURE;
     }
+
     SDL_SetHint(SDL_HINT_RENDER_VSYNC, "1");
+    
     glUseProgram(shader_prog);
+    shader_prog_current = shader_prog;
 
     mat4 model;
     GLuint model_uniform_loc = glGetUniformLocation(shader_prog,"model");
@@ -193,7 +195,7 @@ int main() {
     mat4 proj;
     GLuint proj_uniform_loc = glGetUniformLocation(shader_prog,"proj");
     
-    vec3 light_dir; light_dir[0]=0.0f; light_dir[1]=-1.0f; light_dir[2] = 0.0f;
+    vec3 light_dir; light_dir[0]=0.1f; light_dir[1]=-0.7f; light_dir[2] = 0.2f;
     GLuint light_dir_uniform_loc = glGetUniformLocation(shader_prog,"light_dir");
 
     //__________________________________________________
@@ -208,7 +210,7 @@ int main() {
     //__________________________________________________
     uint32_t prev_tick = SDL_GetTicks();
     
-    glEnable(GL_CULL_FACE); glCullFace(GL_BACK);
+    glEnable(GL_CULL_FACE); //glCullFace(GL_BACK);
     glEnable(GL_DEPTH_TEST); 
 
     //SDL_SetWindowRelativeMouseMode(window,true);
@@ -244,15 +246,16 @@ int main() {
             if(event.type == SDL_EVENT_QUIT) goto break_main_loop;
         }
         
+
        
 
         glm_perspective(cam.fov,(float)WIDTH/(float)HEIGHT,0.1f,10000.0f,proj);
 
         emb_get_keyboard_movement(movement_dir);
 
-        movement_dir[0]*=10.0f;
-        movement_dir[1]*=10.0f;
-        movement_dir[2]*=10.0f;
+        movement_dir[0]*=8.0f;
+        movement_dir[1]*=8.0f;
+        movement_dir[2]*=8.0f;
 
         glm_vec3_rotate(movement_dir,cam.rot[1],(vec3){0,1,0});
         glm_vec3_scale(movement_dir,delta_time,movement_dir);
@@ -267,7 +270,19 @@ int main() {
         //__________________________________________________
         for(uint32_t i = 0; i<batch.primitives.len; ++i){
             emb_primitive * inst = VEC_GETPTR(&batch.primitives,emb_primitive,i);
-                                    
+            
+            if(inst->shader_program != shader_prog_current){
+                shader_prog_current = inst->shader_program;
+                glUseProgram(shader_prog_current);
+            }
+            else if(shader_prog_current != shader_prog){
+                shader_prog_current = shader_prog;
+                glUseProgram(shader_prog_current);
+            }
+            glUseProgram(shader_prog);
+            shader_prog_current = shader_prog;
+
+
             prim_inst_get_transform(inst,model);
             camera_get_view(&cam,view);
 
@@ -275,16 +290,19 @@ int main() {
             glUniformMatrix4fv(proj_uniform_loc,1,GL_FALSE,(float*)proj);
             glUniformMatrix4fv(model_uniform_loc,1,GL_FALSE,(float*)model);
             glUniformMatrix4fv(view_uniform_loc,1,GL_FALSE,(float*)view);
-            void * eoffset = (void*)( (inst->eb_start - batch.eb_data) *sizeof(__uint32_t) );
+            void * eoffset = (void*)( (inst->eb_start - batch.eb_data) *sizeof(uint32_t) );
             
 
             glDrawElements(
                 GL_TRIANGLES,
                 inst->eb_len, //in elements
                 GL_UNSIGNED_INT,
-                eoffset //in bytes??? what a hell is this actually.
+                eoffset //in bytes??? what a hell is this actually. (UPD LAMO I STILL DON'T GET IT)
             );
         }
+
+
+        //THIS IS EXAMPLE OF DRAWING FEW PRIMITIVES AT ONCE
         //void * eoffset = (void*)( (batch.ebo + ) );
         /*glDrawElements(
                 GL_TRIANGLES,

@@ -104,7 +104,9 @@ void prim_inst_def_trtansform(emb_primitive * pr){
 
 
 
-
+//__________________________________________________
+// emb_primitive_group - for static primitives that share shader
+//__________________________________________________
 /*
 there can be few primitives inside the single group;
 they will be drawn in the single draw call, share the same shader program.
