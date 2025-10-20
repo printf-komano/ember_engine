@@ -2,8 +2,8 @@
 
 #include <glad/gl.h>
 #include <stdio.h>
-#include "utils/vector.h"
-#include "model/model.h"
+#include "vector.h"
+#include "model.h"
 
 
 #define EMB_VB_PRIM_CAP 1024

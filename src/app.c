@@ -7,10 +7,10 @@
 
 #include <stdio.h>
 
-#include "utils/vector.h"
-#include "utils/shader_reader.h"
+#include "vector.h"
+#include "shader_reader.h"
 #include "bhandler.h"
-#include "model/camera.h"
+#include "camera.h"
 #include "input.c"
 
 

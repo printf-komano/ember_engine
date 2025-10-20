@@ -7,15 +7,15 @@
 #include <math.h>
 
 
-#include "utils/vector.h"
-#include "utils/shader_reader.h"
-#include "bhandler.h"
+#include "src/vector.h"
+#include "src/shader_reader.h"
+#include "src/bhandler.h"
 
-#include "model/camera.h"
-#include "model/node.h"
+#include "src/camera.h"
+#include "src/node.h"
 
-#include "input.c"
-#include "app.c"
+#include "src/input.c"
+#include "src/app.c"
 
 
 #define WIDTH 1024
